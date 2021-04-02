@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">OnexProject</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_profile">Profile</string>
+
+    <string name="onex">ONEX</string>
+
+    //errorMessage
+    <string name="emailEmpty">이메일이 등록되지 않았습니다.</string>
+    <string name="pwdEmpty">비밀번호가 등록되지 않았습니다.</string>
+    <string name="pwdNOMatch">비밀번호가 일치하지 않습니다.</string>
+    <string name="failLogin">이메일/비밀번호가 일치하지 않습니다.</string>
+
+    //successMessage
+    <string name="loginSuccess">로그인에 성공하셨습니다.</string>
+    <string name="signUpSuccess">회원가입에 성공하셨습니다.</string>
+    //login
+    <string name="email">이메일</string>
+    <string name="pwd">비밀번호</string>
+    <string name="login">로그인</string>
+    <string name="signUp">회원가입</string>
+    <string name="findIDPWD"><u>아이디/비밀번호 찾기</u></string>
+    <string name="logout">로그아웃</string>
+    //register
+    <string name="name">이름</string>
+    <string name="age">나이</string>
+    <string name="sex">성별</string>
+    <string name="confirmPWD">비밀번호 확인</string>
+    <string name="empty_email">이메일이 작성되지 않았습니다.</string>
+    <string name="empty_pwd">비밀번호가 작성되지 않았습니다.</string>
+
+</resources>
