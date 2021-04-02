@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_photo"
+        android:enabled="true"
+        android:icon="@drawable/ic_add_a_photo_black_24dp"
+        android:title="photo"/>
+    <item
+        android:id="@+id/action_like"
+        android:enabled="true"
+        android:icon="@drawable/ic_thumb_up_black_24dp"
+        android:title="like"/>
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="home"/>
+    <item
+        android:id="@+id/action_id"
+        android:enabled="true"
+        android:icon="@drawable/ic_perm_identity_black_24dp"
+        android:title="id"/>
+</menu>
