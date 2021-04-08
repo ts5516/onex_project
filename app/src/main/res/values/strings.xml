@@ -1,15 +1,11 @@
 <resources>
     <string name="app_name">OnexProject</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_login">title</string>
 
     <string name="onex">ONEX</string>
 
     //errorMessage
+    <string name="nameEmpty">이름이 등록되지 않았습니다.</string>
     <string name="emailEmpty">이메일이 등록되지 않았습니다.</string>
     <string name="pwdEmpty">비밀번호가 등록되지 않았습니다.</string>
     <string name="pwdNOMatch">비밀번호가 일치하지 않습니다.</string>
@@ -17,14 +13,19 @@
 
     //successMessage
     <string name="loginSuccess">로그인에 성공하셨습니다.</string>
-    <string name="signUpSuccess">회원가입에 성공하셨습니다.</string>
+    <string name="signUpSuccess">회원가입에 성공하셨습니다. 입력하실 이메일에서 인증해주세요.</string>
+
     //login
     <string name="email">이메일</string>
     <string name="pwd">비밀번호</string>
     <string name="login">로그인</string>
     <string name="signUp">회원가입</string>
-    <string name="findIDPWD"><u>아이디/비밀번호 찾기</u></string>
+    <string name="findPWD"><u>비밀번호 찾기</u></string>
     <string name="logout">로그아웃</string>
+    <string name="resetPWD">입력하신 이메일에 비밀번호를 전송하였습니다.</string>
+    <string name="verifyEmail">입력하신 이메일에서 인증해주세요.</string>
+    <string name="changePWD">비밀번호가 성공적으로 변경되었습니다.</string>
+
     //register
     <string name="name">이름</string>
     <string name="age">나이</string>
@@ -32,5 +33,12 @@
     <string name="confirmPWD">비밀번호 확인</string>
     <string name="empty_email">이메일이 작성되지 않았습니다.</string>
     <string name="empty_pwd">비밀번호가 작성되지 않았습니다.</string>
+
+    //profile
+    <string name="changePWDButton">비밀번호 변경</string>
+    <string name="verifyEmailButton">이메일 인증이 필요합니다!</string>
+    <string name="setImage">이미지 설정</string>
+    <string name="successChangeImage">이미지 변경에 성공하였습니다.</string>
+    <string name="failChangeImage">이미지 변경에 실패하였습니다.</string>
 
 </resources>

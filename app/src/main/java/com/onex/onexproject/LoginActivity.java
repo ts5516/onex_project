@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -34,6 +35,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
@@ -46,13 +48,14 @@ import com.onex.onexproject.Profile;
 import com.onex.onexproject.R;
 import com.onex.onexproject.databinding.ActivityLoginBinding;
 
+import org.w3c.dom.Text;
+
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding activityLoginBinding;
 
     private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 1001;
-    private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
 
@@ -64,10 +67,9 @@ public class LoginActivity extends AppCompatActivity {
         View view = activityLoginBinding.getRoot();
         setContentView(view);
 
-        ProgressBar progressBar = activityLoginBinding.loading;
         mAuth = FirebaseAuth.getInstance();
 
-        createRequst();
+        createRequest();
 
         activityLoginBinding.gSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +85,26 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Register.class));
             }
         }));
+
+        activityLoginBinding.findPWD.setOnClickListener((new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String email = activityLoginBinding.email.getText().toString().trim();
+
+                if(TextUtils.isEmpty(email)){
+                    activityLoginBinding.email.setError(getString(R.string.emailEmpty));
+                    return;
+                }
+                mAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(LoginActivity.this, getString(R.string.resetPWD), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        }));
+
 
         activityLoginBinding.login.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -100,25 +122,26 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                activityLoginBinding.loadingLogin.setVisibility(View.VISIBLE);
                 mAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Log.d("LoginActivity", getString(R.string.loginSuccess));
+                            Toast.makeText(LoginActivity.this, getString(R.string.loginSuccess), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), Profile.class));
                         }else{
-                            Log.e("LoginActivity", getString(R.string.failLogin));
+                            Toast.makeText(LoginActivity.this, getString(R.string.failLogin), Toast.LENGTH_SHORT).show();
+                            activityLoginBinding.loadingLogin.setVisibility(View.INVISIBLE);
                         }
 
                     }
                 });
-
             }
         }));
 
     }
 
-    private void createRequst() {
+    private void createRequest() {
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
