@@ -35,9 +35,13 @@ public class Register extends AppCompatActivity {
     private ActivityResigterBinding activityResigterBinding;
     private static final String TAG = "Register";
 
-
     private String userID;
+    private Uri imageUri;
+    private static final int PICK_IMAGE = 1;
 
+    UploadTask uploadTask;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     DocumentReference documentReference;
@@ -51,6 +55,9 @@ public class Register extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        userID = mAuth.getCurrentUser().getUid();
+        documentReference = fStore.collection("user").document(userID);
+        storageReference = firebaseStorage.getInstance().getReference("profile images");
 
         if(mAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -60,64 +67,65 @@ public class Register extends AppCompatActivity {
         activityResigterBinding.signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fullName = activityResigterBinding.registerName.getText().toString().trim();
-                String email = activityResigterBinding.registerEmail.getText().toString().trim();
-                String pwd = activityResigterBinding.registerPWD.getText().toString();
-                String confirmPwd = activityResigterBinding.confirmPWD.getText().toString();
+                registerUser();
 
-                if (fullName.isEmpty()){
-                    activityResigterBinding.registerName.setError(getString(R.string.nameEmpty));
-                    return;
-                }if(email.isEmpty()){
-                    activityResigterBinding.registerEmail.setError(getString(R.string.emailEmpty));
-                    return;
-                }if(pwd.isEmpty()){
-                    activityResigterBinding.registerPWD.setError(getString(R.string.pwdEmpty));
-                    return;
-                }if(confirmPwd.isEmpty()){
-                    activityResigterBinding.confirmPWD.setError(getString(R.string.pwdEmpty));
-                    return;
-                }if(!pwd.equals(confirmPwd)){
-                    activityResigterBinding.confirmPWD.setError(getString(R.string.pwdNOMatch));
-                    return;
-                }
-
-                mAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(Register.this, getString(R.string.signUpSuccess), Toast.LENGTH_SHORT).show();
-                            registerUser(fullName, email);
-                            startActivity(new Intent(getApplicationContext(), Profile.class));
-                        }else{
-                            Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-                });
             }
         });
     }
 
-    private void registerUser(String fullName, String email){
-        userID = mAuth.getCurrentUser().getUid();
-        documentReference = fStore.collection("users").document(userID);
-        Map<String, Object> user = new HashMap<>();
-        user.put("fName", fullName);
-        user.put("email", email);
-        user.put("imageUri", R.drawable.ic_perm_identity_black_24dp); // 초기이미지 설정
+    private void registerUser(){
+        String fullName = activityResigterBinding.registerName.getText().toString().trim();
+        String email = activityResigterBinding.registerEmail.getText().toString().trim();
+        String pwd = activityResigterBinding.registerPWD.getText().toString();
+        String confirmPwd = activityResigterBinding.confirmPWD.getText().toString();
 
-        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+        if (fullName.isEmpty()){
+            activityResigterBinding.registerName.setError(getString(R.string.nameEmpty));
+            return;
+        }if(email.isEmpty()){
+            activityResigterBinding.registerEmail.setError(getString(R.string.emailEmpty));
+            return;
+        }if(pwd.isEmpty()){
+            activityResigterBinding.registerPWD.setError(getString(R.string.pwdEmpty));
+            return;
+        }if(confirmPwd.isEmpty()){
+            activityResigterBinding.confirmPWD.setError(getString(R.string.pwdEmpty));
+            return;
+        }if(!pwd.equals(confirmPwd)){
+            activityResigterBinding.confirmPWD.setError(getString(R.string.pwdNOMatch));
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onSuccess(Void aVoid) {
-                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: " + e.toString());
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(Register.this, getString(R.string.signUpSuccess), Toast.LENGTH_SHORT).show();
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("fName", fullName);
+                    user.put("email", email);
+                    user.put("pwd", pwd);
+                    user.put("imageUri", null); // 초기이미지는 프로파일에서 설정한다.
+
+                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, "onFailure: " + e.toString());
+                        }
+                    });
+                    startActivity(new Intent(getApplicationContext(), Profile.class));
+                }else{
+                    Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
+
     }
 
 }

@@ -91,7 +91,11 @@ public class Profile extends AppCompatActivity {
         activityProfileBinding.changeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UploadData();
+                Intent intent = new Intent();
+                intent.setType("image/");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, PICK_IMAGE);
+                UpdateImage();
             }
         });
     }
@@ -102,13 +106,22 @@ public class Profile extends AppCompatActivity {
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                String name = task.getResult().getString("name");
-                String email = task.getResult().getString("email");
-                String uri = task.getResult().getString("imageUri");
 
-                Picasso.get().load(uri).into(activityProfileBinding.userImage);
-                activityProfileBinding.userName.setText(name);
-                activityProfileBinding.userEmail.setText(email);
+                if(task.getResult().exists()) {
+                    String name = task.getResult().getString("name");
+                    String email = task.getResult().getString("email");
+                    String uri = task.getResult().getString("imageUri");
+
+                    if(uri == null)
+                        activityProfileBinding.userImage.setImageResource(R.drawable.fui_ic_anonymous_white_24dp);
+                    else
+                        Picasso.get().load(uri).into(activityProfileBinding.userImage);
+                    activityProfileBinding.userName.setText(name);
+                    activityProfileBinding.userEmail.setText(email);
+                }
+                else{
+                    Toast.makeText(Profile.this, getString(R.string.noProfile), Toast.LENGTH_SHORT).show();
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -124,32 +137,22 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    public void ChooseImage(View view){
-        Intent intent = new Intent();
-        intent.setType("image/");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == PICK_IMAGE || resultCode == RESULT_OK ||
-        data != null || data.getData() != null){
+                data != null || data.getData() != null){
             imageUri = data.getData();
-
-            Picasso.get().load(imageUri).into(activityProfileBinding.userImage);
         }
     }
-
     private String getFileExt(Uri uri){
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-    private void UploadData() {
+    private void UpdateImage() {
         final StorageReference reference = storageReference.child(System.currentTimeMillis() + "." + getFileExt(imageUri));
 
         uploadTask = reference.putFile(imageUri);
@@ -172,6 +175,7 @@ public class Profile extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(Profile.this, getString(R.string.successChangeImage), Toast.LENGTH_SHORT).show();
+                            Picasso.get().load(imageUri).into(activityProfileBinding.userImage);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
