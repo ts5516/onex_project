@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+
+
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_margin="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exhibition"
+                android:fontFamily="sans-serif-black"
+
+                android:textSize="30dp"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <ImageButton
+                android:background="@color/white"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_search_24" />
+        </LinearLayout>
+
+
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="400dp"
+              android:scaleType="fitXY"
+              android:src="@drawable/exhibit1"
+              />
+
+
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-black"
+                android:text="오늘의 전시"
+                android:textSize="15dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-black"
+                android:text="인기 전시"
+                android:textSize="15dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:src ="@drawable/home1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                    />
+                <ImageView
+                    android:src ="@drawable/home2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                />
+                <ImageView
+                    android:src ="@drawable/home3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="175dp"
+                />
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-black"
+                android:text="최신 전시"
+                android:textSize="15dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="175dp"
+                    />
+                <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="175dp"
+                />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
