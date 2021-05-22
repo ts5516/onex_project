@@ -33,4 +33,13 @@
     <string name="empty_email">이메일이 작성되지 않았습니다.</string>
     <string name="empty_pwd">비밀번호가 작성되지 않았습니다.</string>
 
+    //profile
+    <string name="profileSet">프로필 설정</string>
+    <string name="follow">팔로우</string>
+    <string name="following">팔로잉</string>
+    <string name="tabitem1">소개</string>
+    <string name="tabitem2">작품</string>
+    <string name="tabitem3">전시회</string>
+    <string name="tabitem4">컬렉션</string>
+
 </resources>

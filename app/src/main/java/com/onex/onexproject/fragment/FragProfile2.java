@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.onex.onexproject.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,15 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class frag1 extends Fragment
-{
+import com.onex.onexproject.R;
+
+public class FragProfile2 extends Fragment {
     private View view;
+
+    public FragProfile2(){
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.frag1, container,false);
-
+        view = inflater.inflate(R.layout.frag_profile2, container, false);
         return view;
     }
 }

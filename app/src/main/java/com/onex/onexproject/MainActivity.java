@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         View view = mBinding.getRoot();
         setContentView(view);
 
-
-
         mBinding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
