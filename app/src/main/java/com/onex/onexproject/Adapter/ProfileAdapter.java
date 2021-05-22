@@ -6,10 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.onex.onexproject.fragment.FragProfile1;
-import com.onex.onexproject.fragment.FragProfile2;
-import com.onex.onexproject.fragment.FragProfile3;
-import com.onex.onexproject.fragment.FragProfile4;
+import com.onex.onexproject.Frag_Profile.FragProfile1;
+import com.onex.onexproject.Frag_Profile.FragProfile2;
+import com.onex.onexproject.Frag_Profile.FragProfile3;
+import com.onex.onexproject.Frag_Profile.FragProfile4;
 
 public class ProfileAdapter extends FragmentStateAdapter {
     public ProfileAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {

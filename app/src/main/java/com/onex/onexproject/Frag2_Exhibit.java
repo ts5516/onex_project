@@ -1,4 +1,4 @@
-package com.onex.onexproject.fragment;
+package com.onex.onexproject;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,20 +8,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
-import com.onex.onexproject.R;
-
-public class FragProfile4 extends Fragment {
-    private View view;
-
-    public FragProfile4(){
-
-    }
+public class Frag2_Exhibit extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_profile4, container, false);
-        return view;
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.frag2_exhibit, container, false);
+        return rootView;
+
     }
 }
