@@ -1,18 +1,27 @@
 {
   "project_info": {
     "project_number": "699055322158",
+    "firebase_url": "https://taesungislove-default-rtdb.firebaseio.com",
     "project_id": "taesungislove",
     "storage_bucket": "taesungislove.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:699055322158:android:f08cb19e060b87feb35bbf",
+        "mobilesdk_app_id": "1:699055322158:android:9fc80a138c0da11bb35bbf",
         "android_client_info": {
           "package_name": "com.onex.onexproject"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "699055322158-7ovv2eqpjkpn97funangn8v19ql2vgc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onex.OnexProject",
+            "certificate_hash": "194440956c9e0b9d30b519ab42bbb829a72b9d40"
+          }
+        },
         {
           "client_id": "699055322158-a03q0s5i9i77pu9tt8migud3r92va406.apps.googleusercontent.com",
           "client_type": 3

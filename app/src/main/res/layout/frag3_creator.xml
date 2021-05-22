@@ -21,16 +21,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_margin="35sp"
                 >
 
 
 
                 <TextView
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Title"
+                    android:text="ONEX"
                     android:fontFamily="sans-serif-black"
-                    android:textSize="35dp"
+
+                    android:textSize="30dp"
                     />
                 <TextView
                     android:layout_width="match_parent"
@@ -40,6 +43,7 @@
                     android:textSize="20dp"
                     />
                 <Button
+                    android:id="@+id/btn_exhibition"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     />

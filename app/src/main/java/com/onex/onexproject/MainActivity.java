@@ -29,6 +29,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    //바인딩 객체 선언
     private ActivityMainBinding mBinding;
 
     FirebaseStorage firebaseStorage;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+
+        //액티비티 바인딩 객체에 할당 및 뷰 설정
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = mBinding.getRoot();
         setContentView(view);
