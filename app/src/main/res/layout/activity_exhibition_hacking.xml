@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Exhibition_hacking">
+<ScrollView
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:src="@drawable/hacking1"/>
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hacking2"/>
+        </FrameLayout>
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/hacking3"/>
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:lineSpacingExtra="10dp"
+                android:textSize="20dp"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/body"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="'컬렉션_오픈 해킹 채굴' 은 미술관을 구성하는 여러 주체들이 소장작품 컬렉션에 접근하는 방식을 실험적으로 모델링하여 기존의 컬렉션 해석과 감사으 관리 체계 전반에 걸쳐 차별적 의미를 발생시키고자 마련되었다. 비대면 상황에서 강화되고 있는 온라인 체계를 바탕으로 컬렉션을 새로이 들어다보아야할 필요와 함께 네트워크형 미술관으로서의 전환을 앞둔 서울시립미술관이 미술관의 근간인 컬렉션에 대해 복합적이고 다중적인 연구를 진행해야할 시점이기 때문이다.  "/>
+
+
+
+    </LinearLayout>
+</ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="bottom" 
+        android:orientation="vertical"> 
+    <Button
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="관람하기"/>
+    </LinearLayout>
+
+  
+
+</LinearLayout>

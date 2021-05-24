@@ -7,8 +7,6 @@
     android:orientation="vertical">
 
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,152 +16,205 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:layout_margin="25dp"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/title_english"
+                    android:text="Exhibition"
+                    android:textColor="@color/black"
+                    android:textSize="26sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <ImageButton
+                    android:id="@+id/Serachbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_baseline_search_24" />
+            </LinearLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="450dp" />
+
+
+            <LinearLayout
             android:orientation="vertical"
-            >
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exhibition"
-                android:fontFamily="sans-serif-black"
-
-                android:textSize="30dp"
-                />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-
-            <ImageButton
-                android:id="@+id/Serachbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:background="@color/white"
-                android:src="@drawable/ic_baseline_search_24" />
-        </LinearLayout>
-
-
-
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="400dp"
-              android:scaleType="fitXY"
-              android:src="@drawable/exhibit1"
-              />
-
-
+            android:layout_margin="20dp">
 
             <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/menu2"
                 android:text="오늘의 전시"
-                android:textSize="15dp"
-                />
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:src="@drawable/today1"/>
+
+
+
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:src="@drawable/today2"/>
+
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:layout_width="200dp"
+                            android:layout_height="225dp"
+                            android:src="@drawable/today3"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+
+
+             </LinearLayout>
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                    />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                    />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                    />
-            </LinearLayout>
-
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
-                android:text="인기 전시"
-                android:textSize="15dp"
-                />
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/menu2"
+                    android:text="인기 전시"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+            android:layout_marginTop="20dp"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+            android:orientation="horizontal">
+                 <ImageView
+                     android:scaleType="fitXY"
+                     android:layout_width="150dp"
+                     android:layout_height="225dp"
+                     android:src="@drawable/home1"/>
+
+
+
                 <ImageView
-                    android:src ="@drawable/home1"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                    />
-                <ImageView
-                    android:src ="@drawable/home2"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                />
-                <ImageView
-                    android:src ="@drawable/home3"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="175dp"
-                />
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:layout_width="150dp"
+                    android:layout_height="225dp"
+                    android:src="@drawable/home2"/>
+
+             <ImageView
+
+                 android:id="@+id/btn_hacking"
+                android:layout_marginLeft="10dp"
+                android:scaleType="fitXY"
+                android:layout_width="200dp"
+                android:layout_height="225dp"
+                android:src="@drawable/hacking1"/>
+                </LinearLayout>
+                </HorizontalScrollView>
+
+
+
             </LinearLayout>
-            <TextView
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
-                android:text="최신 전시"
-                android:textSize="15dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                    />
+                android:layout_margin="20dp">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="175dp"
-                    />
-                <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="175dp"
-                />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/menu2"
+                    android:text="최신 전시"
+                   android:textColor="@color/black"
+                    android:textSize="15dp" />
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:src="@drawable/recent1"/>
+
+
+
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:src="@drawable/recent2"/>
+
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:layout_width="200dp"
+                            android:layout_height="225dp"
+                            android:src="@drawable/recent3"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+
+
             </LinearLayout>
 
 
+</LinearLayout>
 
-        </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
