@@ -7,18 +7,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class ViewPagerAdapter extends PagerAdapter {
-    private Context context;
-    private LayoutInflater layoutInflater;
-    private Integer [] images={R.drawable.ic_frag1,R.drawable.ic_frag2,R.drawable.ic_frag3,R.drawable.ic_frag4,R.drawable.ic_frag1};
+import org.jetbrains.annotations.NotNull;
 
+public class ViewPagerAdapter extends PagerAdapter {
+
+    private LayoutInflater inflater;
+    private final int[] images = {
+            R.drawable.exhibit1,
+            R.drawable.exhibit2,
+            R.drawable.exhibit3,
+            R.drawable.exhibit4,
+            R.drawable.exhibit5};
+    private Context mContext;
 
     public ViewPagerAdapter(Context context) {
-        this.context = context;
+        mContext = context;
     }
+
 
     @Override
     public int getCount() {
@@ -26,27 +35,21 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view ==object;
+    public boolean isViewFromObject(@NonNull @NotNull View view, @NonNull @NotNull Object object) {
+        return view ==((View)object);
     }
-
-    @NonNull
-    @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        layoutInflater =(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view=layoutInflater.inflate(R.layout.pager,null);
-        ImageView imageView=(ImageView) view.findViewById(R.id.pager_image);
+    public Object instantiateItem(ViewGroup container, int position)
+    {
+        inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view =inflater.inflate(R.layout.ex1,container,false);
+        ImageView imageView = view.findViewById(R.id.ex1);
         imageView.setImageResource(images[position]);
-
-        ViewPager vp=(ViewPager) container;
-        vp.addView(view,0);
+        container.addView(view);
         return view;
     }
-
     @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        ViewPager vp=(ViewPager) container;
-        View view = (View) object;
-        vp.removeView(view);
+    public void destroyItem(ViewGroup container, int position, Object object)
+    {
+        container.invalidate();
     }
 }

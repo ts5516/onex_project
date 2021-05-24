@@ -27,17 +27,20 @@
 
 
             <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="ONEX"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/title_english"
 
-                android:textSize="35dp"
+                android:textSize="30dp"
                 />
 
 
             <ImageView
-                android:layout_marginTop="20dp"
+
                 android:id="@+id/btn_exhibition"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
@@ -48,11 +51,12 @@
                 />
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/menu"
                 android:textSize="15dp"
 
                 android:text="인기 전시 TOP3"
@@ -71,6 +75,7 @@
                     />
 
                 <ImageView
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/home2"
                     android:id="@+id/home_2"
                     android:layout_width="0dp"
@@ -78,6 +83,7 @@
                     android:layout_height="200dp"
                     />
                 <ImageView
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/home3"
                     android:id="@+id/home_3"
                     android:layout_width="0dp"
@@ -94,11 +100,12 @@
 
                 />
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/menu"
                 android:textSize="15dp"
                 android:text="인기 작품 TOP3"
                 />
@@ -131,11 +138,12 @@
                     />
             </LinearLayout>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/menu"
                 android:textSize="15dp"
                 android:text="전시 포스트"
 
@@ -146,6 +154,7 @@
                 android:orientation="horizontal"
                 >
                 <ImageView
+
                     android:src ="@drawable/home7"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -153,12 +162,14 @@
                     />
 
                 <ImageView
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/home8"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
                     android:layout_weight="1" />
 
                 <ImageView
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/home9"
                     android:layout_width="0dp"
                     android:layout_weight="1"
