@@ -48,5 +48,7 @@
     <string name="successChangeImage">이미지 변경에 성공하였습니다.</string>
     <string name="failChangeImage">이미지 변경에 실패하였습니다.</string>
     <string name="noProfile">계정이 등록되지 않았습니다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
