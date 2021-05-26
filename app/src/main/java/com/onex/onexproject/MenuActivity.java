@@ -6,14 +6,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.onex.onexproject.Frag_Menu.Frag1_Home;
+import com.onex.onexproject.Frag_Menu.Frag2_Exhibit;
+import com.onex.onexproject.Frag_Menu.Frag3_Creator;
+import com.onex.onexproject.Frag_Menu.Frag4_Profile;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
     private Frag1_Home frag1 = new Frag1_Home();
     private Frag2_Exhibit frag2 = new Frag2_Exhibit();
     private Frag3_Creator frag3 = new Frag3_Creator();
-    private Frag4_Login frag4 = new Frag4_Login();
+    private Frag4_Profile frag4 = new Frag4_Profile();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class MenuActivity extends AppCompatActivity {
             } else if (id == R.id.action_creator) {
                 fragment = new Frag3_Creator();
             } else if (id == R.id.action_login) {
-                fragment = new Frag4_Login();
+                fragment = new Frag4_Profile();
             }
             fragmentTransaction.add(R.id.layout_main_frame, fragment, tag);
         } else {

@@ -8,22 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import com.onex.onexproject.Frag2_Exhibit;
 import com.onex.onexproject.R;
 
-public class FragProfile3 extends Fragment {
+public class FragProfile_intro extends Fragment { //소개
     private View view;
 
-    public FragProfile3(){
-
-    }
+    public FragProfile_intro() {}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_profile3, container, false);
+        view = inflater.inflate(R.layout.profile_frag_intro, container, false);
+
         return view;
     }
 }

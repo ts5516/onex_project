@@ -1,50 +1,39 @@
 package com.onex.onexproject.Model;
 
 public class Post {
-    private String postid;
-    private String postimage;
-    private String description;
-    private String publisher;
+    private String uri;
+    private String size;
+    private String tag;
 
-    public Post(String postid, String postimage, String description, String publisher) {
-        this.postid = postid;
-        this.postimage = postimage;
-        this.description = description;
-        this.publisher = publisher;
+    public Post(){}
+    public Post(String uri, String size, String tag) {
+        this.uri = uri;
+        this.size = size;
+        this.tag = tag;
+    }
+    public String getUri() {
+        return uri;
     }
 
-    public Post() {
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
-    public String getPostid() {
-        return postid;
+    public String getSize() {
+        return size;
     }
 
-    public void setPostid(String postid) {
-        this.postid = postid;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public String getPostimage() {
-        return postimage;
+    public String getTag() {
+        return tag;
     }
 
-    public void setPostimage(String postimage) {
-        this.postimage = postimage;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
 }

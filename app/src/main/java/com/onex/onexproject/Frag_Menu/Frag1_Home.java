@@ -1,17 +1,12 @@
-package com.onex.onexproject;
+package com.onex.onexproject.Frag_Menu;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.onex.onexproject.MenuActivity;
+import com.onex.onexproject.R;
 
 
 public class Frag1_Home extends Fragment {
@@ -64,7 +60,7 @@ public class Frag1_Home extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.frag1_home, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.menu_frag_home, container, false);
         button = (ImageView) rootView.findViewById(R.id.btn_exhibition);
 
 

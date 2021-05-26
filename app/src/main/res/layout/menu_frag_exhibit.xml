@@ -58,7 +58,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="450dp" />
 
-
             <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"

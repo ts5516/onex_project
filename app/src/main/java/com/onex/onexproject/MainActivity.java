@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
 
     FirebaseStorage firebaseStorage;
-    FirebaseFirestore firebaseFirestore;
-    DocumentReference db;
+    FirebaseFirestore db;
+    DocumentReference doref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         View view = mBinding.getRoot();
         setContentView(view);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         mBinding.syncButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int num = 3069; num <= 3127; num++){
                     StorageReference storageReference = firebaseStorage.getReference();
                     String imageName = "IMG_" + num + ".JPG";
-                    db = firebaseFirestore.collection("exhibition").document(imageName);
+                    doref = db.collection("exhibition").document(imageName);
                     storageReference.child("전시 이미지/" + "IMG_" + num + ".JPG").getDownloadUrl()
                             .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     Map<String, Object> exhibition = new HashMap<>();
                                     exhibition.put("imageUri", uri.toString());
-                                    db.set(exhibition);
+                                    doref.set(exhibition);
                                 }
                             });
 

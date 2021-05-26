@@ -7,7 +7,7 @@
     tools:context=".SearchActivity">
 
     <EditText
-        android:id="@+id/SearchBar"
+        android:id="@+id/searchBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -25,24 +25,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/searchTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchBar"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:tabIndicatorColor="@color/black"/>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/search_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/searchTab"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

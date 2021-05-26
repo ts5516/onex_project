@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/PFbgImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/fui_idp_button_background_phone" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/PFUserImage"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/temp_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/PFsetBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="@string/profileSet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/PFuserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/PFUserImage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/PFUserImage"
+            app:layout_constraintTop_toBottomOf="@+id/PFUserImage" />
+
+        <TextView
+            android:id="@+id/PFuserfollower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/txtFollow"
+            app:layout_constraintStart_toEndOf="@+id/txtFollow" />
+
+        <TextView
+            android:id="@+id/PFuserfollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/PFuserName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/PFuserName"
+            app:layout_constraintTop_toBottomOf="@+id/PFuserName" />
+
+        <TextView
+            android:id="@+id/txtFollower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="팔로워"
+            app:layout_constraintBottom_toBottomOf="@+id/PFuserfollower"
+            app:layout_constraintStart_toEndOf="@+id/PFuserfollower" />
+
+        <TextView
+            android:id="@+id/txtFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="팔로잉"
+            app:layout_constraintBottom_toBottomOf="@+id/PFuserfollowing"
+            app:layout_constraintStart_toEndOf="@+id/PFuserfollowing" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/PF_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/black"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/PF_viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.viewpager2.widget.ViewPager2>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

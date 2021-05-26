@@ -23,51 +23,35 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.onex.onexproject.databinding.ActivityProfileBinding;
+
 import com.onex.onexproject.Adapter.ProfileAdapter;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.onex.onexproject.databinding.ActivityProfileBinding;
+import com.onex.onexproject.databinding.ProfileActivityBinding;
 
 public class Profile extends AppCompatActivity {
 
-    private ActivityProfileBinding activityProfileBinding;
+    private ProfileActivityBinding activityProfileBinding;
     private FragmentPagerAdapter fragmentPagerAdapter;
 
     ProfileAdapter adapter;
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
     DocumentReference db;
-    String profileid;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activityProfileBinding = ActivityProfileBinding.inflate(getLayoutInflater());
+        activityProfileBinding = ProfileActivityBinding.inflate(getLayoutInflater());
         View view = activityProfileBinding.getRoot();
         setContentView(view);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        activityProfileBinding.btnPfSet.setOnClickListener(new View.OnClickListener() {
+        activityProfileBinding.PFsetBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                String btn = activityProfileBinding.btnPfSet.getText().toString();
+                String btn = activityProfileBinding.PFsetBtn.getText().toString();
 
                 if(btn.equals(getString(R.string.profileSet))){
                     // go to editprofile
@@ -78,6 +62,7 @@ public class Profile extends AppCompatActivity {
                 }
             }
         });
+
         FragmentManager fm = getSupportFragmentManager();
         adapter = new ProfileAdapter(fm, getLifecycle());
         activityProfileBinding.PFViewPager.setAdapter(adapter);
