@@ -19,6 +19,7 @@ import com.onex.onexproject.Exhibition_hacking;
 import com.onex.onexproject.R;
 import com.onex.onexproject.SearchActivity;
 import com.onex.onexproject.ViewPagerAdapter;
+import com.pm10.library.LineIndicator;
 
 public class Frag2_Exhibit extends Fragment {
     ImageView button;
@@ -39,6 +40,9 @@ public class Frag2_Exhibit extends Fragment {
         viewPager = rootView.findViewById(R.id.viewPager2);
         adapter = new ViewPagerAdapter(context);
         viewPager.setAdapter(adapter);
+        LineIndicator lineIndicator = rootView.findViewById(R.id.line_indicator);
+        lineIndicator.setupWithViewPager(viewPager);
+
         button =  rootView.findViewById(R.id.btn_hacking);
         SearchBtn = rootView.findViewById(R.id.Serachbtn);
 
@@ -50,6 +54,7 @@ public class Frag2_Exhibit extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(activity.getApplicationContext(), Exhibition_hacking.class);
                 startActivity(intent);
+                activity.finish();
             }
         });
 
@@ -58,6 +63,7 @@ public class Frag2_Exhibit extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(activity.getApplicationContext(), SearchActivity.class);
                 startActivity(intent);
+
             }
         });
         return rootView;

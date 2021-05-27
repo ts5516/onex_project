@@ -45,9 +45,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
                 android:src="@drawable/ic_exhibition3"
-
-
-
                 />
 
             <TextView
@@ -97,7 +94,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
-
                 />
             <TextView
                 android:textColor="@color/black"
