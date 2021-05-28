@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,7 +75,7 @@ public class FragProfile_art extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull @NotNull FragProfile_art.ImageViewHolder holder, int position, @NonNull @NotNull Post model) {
-                Picasso.get().load(model.getUri()).into(holder.image);
+                Glide.with(view).load(model.getUri()).override(300, 300).into(holder.image);
             }
         };
 

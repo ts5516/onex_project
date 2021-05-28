@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -77,7 +78,7 @@ public class Frag4_Profile extends Fragment {
         cirImage = view.findViewById(R.id.PFUserImage);
         profileSetBtn = view.findViewById(R.id.PFsetBtn);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
+        Button logoutbtn = view.findViewById(R.id.button2);
         if(firebaseUser != null){
             db = FirebaseFirestore.getInstance();
             doref = db.collection("users").document(firebaseUser.getUid());
@@ -87,7 +88,7 @@ public class Frag4_Profile extends Fragment {
                     if(task.isSuccessful()){
                         DocumentSnapshot documentSnapshot = task.getResult();
                         userName.setText(documentSnapshot.get("name").toString());
-                        Picasso.get().load(documentSnapshot.get("imageUri").toString()).into(cirImage);
+                        Glide.with(view).load(documentSnapshot.get("imageUri").toString()).into(cirImage);
                     }
                 }
             });
@@ -164,6 +165,13 @@ public class Frag4_Profile extends Fragment {
                             });
 
                 }
+            }
+        });
+
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
             }
         });
         return view;

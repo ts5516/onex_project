@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,8 +20,10 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.onex.onexproject.Adapter.UserAdapter;
 import com.onex.onexproject.Model.User;
 import com.onex.onexproject.R;
 import com.squareup.picasso.Picasso;
@@ -31,10 +34,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class searchUserFragment extends Fragment {
-
+    private OnItemClickListener listener;
     private RecyclerView userRecycler;
     private FirebaseFirestore firestore;
-    private FirestoreRecyclerAdapter adapter;
+    private UserAdapter adapter;
     private EditText searchBar;
     private String TAG = "searchUserFrag";
     private ViewGroup view;
@@ -48,35 +51,12 @@ public class searchUserFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = (ViewGroup)inflater.inflate(R.layout.search_frag_user, container, false);
 
+
         firestore = FirebaseFirestore.getInstance();
         userRecycler = view.findViewById(R.id.SeUserRecycler);
         searchBar = getActivity().findViewById(R.id.searchBar);
 
-        Query query = firestore.collection("users").orderBy("name");
-        FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
-                .setQuery(query, User.class)
-                .build();
-
-        adapter = new FirestoreRecyclerAdapter<User, UserViewHolder>(options) {
-            @NonNull
-            @NotNull
-            @Override
-            public UserViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-                View userView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_user_item, parent, false);
-                return new UserViewHolder(userView);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull @NotNull UserViewHolder holder, int position, @NonNull @NotNull User model) {
-                holder.userName.setText(model.getName());
-                holder.userDesc.setText(model.getDescription());
-                Picasso.get().load(model.getImageUri()).into(holder.userImage);
-            }
-        };
-
-        userRecycler.setHasFixedSize(true);
-        userRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        userRecycler.setAdapter(adapter);
+        setUpReyclerView();
 
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,21 +82,29 @@ public class searchUserFragment extends Fragment {
                 adapter.updateOptions(options);
             }
         });
+
         return view;
     }
 
+    private void setUpReyclerView(){
+        Query query = firestore.collection("users").orderBy("name");
+        FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
+                .setQuery(query, User.class)
+                .build();
+        adapter = new UserAdapter(options);
 
-    private class UserViewHolder extends RecyclerView.ViewHolder {
+        userRecycler.setHasFixedSize(true);
+        userRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        userRecycler.setAdapter(adapter);
+    }
 
-        private TextView userName, userDesc;
-        private CircleImageView userImage;
-        public UserViewHolder(@NonNull @NotNull View itemView) {
-            super(itemView);
 
-            userName = itemView.findViewById(R.id.SeUserName);
-            userDesc = itemView.findViewById(R.id.SeUserDesc);
-            userImage = itemView.findViewById(R.id.PFUserImage);
-        }
+    public interface OnItemClickListener{
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 
     @Override

@@ -98,6 +98,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollowing"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollowing" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="로그아웃"
+            app:layout_constraintEnd_toEndOf="@+id/PFsetBtn"
+            app:layout_constraintStart_toStartOf="@+id/PFsetBtn"
+            app:layout_constraintTop_toBottomOf="@+id/PFsetBtn" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
