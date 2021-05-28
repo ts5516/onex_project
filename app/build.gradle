@@ -75,5 +75,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //circle indicater
-    implementation  'me.relex:circleindicator:1.2.2'
+    implementation 'com.pm10:indicator:1.0.2'
 }

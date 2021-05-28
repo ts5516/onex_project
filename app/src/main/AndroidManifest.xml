@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnexProject">
-        <activity android:name=".Exhibition_hacking"></activity>
+        <activity android:name=".Exhibition_hacking3"></activity>
+        <activity android:name=".Exhibition_hacking2" />
+        <activity android:name=".Exhibition_hacking" />
         <activity
             android:name=".MenuActivity"
             android:theme="@style/AppTheme">

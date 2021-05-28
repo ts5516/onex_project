@@ -23,7 +23,8 @@ public class Frag1_Home extends Fragment {
     FirebaseStorage firebaseStorage;
     FirebaseFirestore firebaseFirestore;
     MenuActivity activity;
-    ImageView button;
+    ImageView btn_exhibit;
+    ImageView btn_creator;
 
     public void onAttach(Context context) {
 
@@ -61,19 +62,25 @@ public class Frag1_Home extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.menu_frag_home, container, false);
-        button = (ImageView) rootView.findViewById(R.id.btn_exhibition);
+        btn_exhibit = (ImageView) rootView.findViewById(R.id.btn_exhibition);
+        btn_creator = (ImageView) rootView.findViewById(R.id.btn_creator);
 
 
 
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btn_exhibit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.bottomNavigationView.setSelectedItemId(R.id.action_exhibition);
             }
         });
-
+        btn_creator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.bottomNavigationView.setSelectedItemId(R.id.action_creator);
+            }
+        });
 
         return rootView;
     }

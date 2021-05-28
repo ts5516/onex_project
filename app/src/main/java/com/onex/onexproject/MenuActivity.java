@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
@@ -17,9 +18,11 @@ import com.onex.onexproject.Frag_Menu.Frag3_Creator;
 import com.onex.onexproject.Frag_Menu.Frag4_Profile;
 
 public class MenuActivity extends AppCompatActivity {
-
+    private Menu menu;
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    public BottomNavigationView bottomNavigationView;
+    public BottomNavigationView bottomNavigationView; //바텀 네비게이션 뷰
+    private FragmentTransaction ft;
+    private FragmentManager fm;
     private Button btn;
     private Frag1_Home frag1 = new Frag1_Home();
     private Frag2_Exhibit frag2 = new Frag2_Exhibit();
@@ -36,64 +39,60 @@ public class MenuActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //NavigationItemSelecte
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                BottomNavigate(menuItem.getItemId());
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        setFrag(0);
+                        break;
+                    case R.id.action_exhibition:
+                        setFrag(1);
+                        break;
+                    case R.id.action_creator:
+                        setFrag(2);
+                        break;
+                    case R.id.action_login:
+                        setFrag(3);
+                        break;
+                }
 
                 return true;
             }
         });
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
+
+        frag1 = new Frag1_Home();
+        frag2 = new Frag2_Exhibit();
+        frag3 = new Frag3_Creator();
+        frag4 = new Frag4_Profile();
+        //첫 화면 설정
+        setFrag(0);
 
 
     }
 
 
-    private void BottomNavigate(int id) {  //BottomNavigation 페이지 변경
-        String tag = String.valueOf(id);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    private void setFrag(int n) {
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch (n) {
+            case 0:
+                ft.replace(R.id.layout_main_frame, frag1);
+                ft.commit();
+                break;
 
-        Fragment currentFragment = fragmentManager.getPrimaryNavigationFragment();
-        if (currentFragment != null) {
-            fragmentTransaction.hide(currentFragment);
+            case 1:
+                ft.replace(R.id.layout_main_frame, frag2);
+                ft.commit();
+                break;
+
+            case 2:
+                ft.replace(R.id.layout_main_frame, frag3);
+                ft.commit();
+                break;
+            case 3:
+                ft.replace(R.id.layout_main_frame, frag4);
+                ft.commit();
+                break;
+
         }
 
-        Fragment fragment = fragmentManager.findFragmentByTag(tag);
-        if (fragment == null) {
-            if (id == R.id.action_home) {
-                fragment = new Frag1_Home();
-
-            } else if (id == R.id.action_exhibition) {
-
-                fragment = new Frag2_Exhibit();
-            } else if (id == R.id.action_creator) {
-                fragment = new Frag3_Creator();
-            } else if (id == R.id.action_login) {
-                fragment = new Frag4_Profile();
-            }
-            fragmentTransaction.add(R.id.layout_main_frame, fragment, tag);
-        } else {
-            fragmentTransaction.show(fragment);
-        }
-
-        fragmentTransaction.setPrimaryNavigationFragment(fragment);
-        fragmentTransaction.setReorderingAllowed(true);
-        fragmentTransaction.commitNow();
     }
-
-    public void onFragmentChange(int index)
-    {
-        if(index==0)
-        {
-        getSupportFragmentManager().beginTransaction().replace(R.id.action_exhibition,frag2).commit();
-        }
-        else if(index==1)
-        {
-            getSupportFragmentManager().beginTransaction().replace(R.id.action_creator,frag3).commit();
-        }
-        else if(index ==2)
-        {getSupportFragmentManager().beginTransaction().replace(R.id.action_login,frag4).commit();
-
-        }
-    }
-
 }

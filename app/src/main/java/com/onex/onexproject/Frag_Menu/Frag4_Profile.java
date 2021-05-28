@@ -109,6 +109,7 @@ public class Frag4_Profile extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     activity.bottomNavigationView.setSelectedItemId(R.id.action_home);
+
                 }
             });
             dialog.create().show();
