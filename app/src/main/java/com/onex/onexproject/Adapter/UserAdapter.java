@@ -41,7 +41,10 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
     protected void onBindViewHolder(@NonNull @NotNull UserViewHolder holder, int position, @NonNull @NotNull User model) {
         holder.userName.setText(model.getName());
         holder.userDesc.setText(model.getDescription());
-        Glide.with(holder.itemView).load(model.getImageUri()).into(holder.userImage);
+        if(model.getImageUri() == null)
+            holder.userImage.setImageResource(R.drawable.outline_account_circle_24);
+        else
+            Glide.with(holder.itemView).load(model.getImageUri()).into(holder.userImage);
     }
 
     @NonNull

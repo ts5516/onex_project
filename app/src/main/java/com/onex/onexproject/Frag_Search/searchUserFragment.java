@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -40,18 +41,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class searchUserFragment extends Fragment implements  UserAdapter.OnItemClickListener {
     private RecyclerView userRecycler;
     private FirebaseFirestore firestore;
-
-
+    private EditText searchBar;
+    private String TAG = "searchUserFrag";
+    private ViewGroup view;
     private UserAdapter adapter;
 
     @Override
     public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
 
     }
-
-    private EditText searchBar;
-    private String TAG = "searchUserFrag";
-    private ViewGroup view;
 
     public searchUserFragment() {
 
@@ -66,6 +64,7 @@ public class searchUserFragment extends Fragment implements  UserAdapter.OnItemC
         firestore = FirebaseFirestore.getInstance();
         userRecycler = view.findViewById(R.id.SeUserRecycler);
         searchBar = getActivity().findViewById(R.id.searchBar);
+
 
         setUpReyclerView();
 
