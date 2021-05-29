@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical">
-
-
 
 
     <ScrollView
@@ -18,25 +16,22 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:layout_margin="23dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
+            android:layout_margin="23dp"
+            android:orientation="vertical">
 
 
             <TextView
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="ONEX"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/title_english"
+                android:text="ONEX"
+                android:textColor="@color/black"
 
-                android:textSize="30dp"
-                />
+                android:textSize="30dp" />
 
 
             <ImageView
@@ -44,151 +39,148 @@
                 android:id="@+id/btn_exhibition"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
-                android:src="@drawable/ic_exhibition3"
-                />
+                android:src="@drawable/ic_exhibition3" />
 
             <TextView
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/menu"
-                android:textSize="15dp"
-
                 android:text="인기 전시 TOP3"
-                />
+                android:textColor="@color/black"
+
+                android:textSize="15dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <ImageView
-                    android:src="@drawable/home1"
                     android:id="@+id/home_1"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="200dp"
-                    />
+                    android:layout_weight="1"
+                    android:src="@drawable/home1" />
 
                 <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/home2"
                     android:id="@+id/home_2"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="200dp"
-                    />
-                <ImageView
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/home3"
+                    android:layout_weight="1"
+                    android:src="@drawable/home2" />
+
+                <ImageView
                     android:id="@+id/home_3"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="200dp"
-                    />
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/home3" />
             </LinearLayout>
+
             <ImageView
-                android:src="@drawable/creator2"
                 android:id="@+id/btn_creator"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
-                />
-            <TextView
-                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:src="@drawable/creator2" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/menu"
-                android:textSize="15dp"
                 android:text="인기 작품 TOP3"
-                />
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <ImageView
 
-                    android:src = "@drawable/home4"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="150dp"
-                    />
+                    android:layout_weight="1"
+                    android:src="@drawable/home4" />
 
                 <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src = "@drawable/home5"
-                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="150dp" />
+                    android:src="@drawable/home5" />
 
                 <ImageView
-                    android:src = "@drawable/home6"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="150dp"
-                    />
+                    android:layout_weight="1"
+                    android:src="@drawable/home6" />
             </LinearLayout>
+
             <TextView
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/menu"
-                android:textSize="15dp"
                 android:text="전시 포스트"
+                android:textColor="@color/black"
+                android:textSize="15dp"
 
                 />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <ImageView
 
-                    android:src ="@drawable/home7"
                     android:layout_width="0dp"
+                    android:layout_height="250dp"
                     android:layout_weight="1"
-                    android:layout_height="250dp"
-                    />
+                    android:src="@drawable/home7" />
 
                 <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/home8"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
-                    android:layout_weight="1" />
-
-                <ImageView
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/home9"
-                    android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:src="@drawable/home8" />
+
+                <ImageView
+                    android:layout_width="0dp"
                     android:layout_height="250dp"
-                    />
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/home9" />
             </LinearLayout>
-            <TextView
-                android:layout_marginTop="10dp"
 
+            <TextView
                 android:layout_width="match_parent"
+
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-black"
-                android:textSize="15dp"
                 android:text="#HOT #HASHTAG"
+                android:textSize="15dp"
 
                 />
+
             <ImageView
-                android:src="@drawable/home10"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:src="@drawable/home10"
 
                 />
-
 
 
         </LinearLayout>

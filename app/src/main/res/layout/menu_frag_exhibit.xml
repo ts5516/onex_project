@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -57,75 +58,77 @@
                 android:id="@+id/viewPager2"
                 android:layout_width="match_parent"
                 android:layout_height="450dp" />
+
             <com.pm10.library.LineIndicator
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                app:p_gap="5dp"
-                app:p_lineHeight="3dp"
-                app:p_lineWidth="15dp"
-                app:p_strokeWidth="0.5dp"
-                app:p_defaultColor="@color/gray"
-                app:p_selectedColor="@color/black"
-                app:p_strokeColor="@color/gray"
                 android:id="@+id/line_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
-            <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp">
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                app:p_defaultColor="@color/gray"
+                app:p_gap="5dp"
+                app:p_lineHeight="3dp"
+                app:p_lineWidth="15dp"
+                app:p_selectedColor="@color/black"
+                app:p_strokeColor="@color/gray"
+                app:p_strokeWidth="0.5dp" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/menu2"
-                android:text="오늘의 전시"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/menu2"
+                    android:text="오늘의 전시"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
+
                     <LinearLayout
-                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
                         android:orientation="horizontal">
+
                         <ImageView
-                            android:scaleType="fitXY"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
-                            android:src="@drawable/today1"/>
-
+                            android:scaleType="fitXY"
+                            android:src="@drawable/today1" />
 
 
                         <ImageView
-                            android:layout_marginLeft="10dp"
-                            android:scaleType="fitXY"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
-                            android:src="@drawable/today2"/>
-
-                        <ImageView
                             android:layout_marginLeft="10dp"
                             android:scaleType="fitXY"
+                            android:src="@drawable/today2" />
+
+                        <ImageView
                             android:layout_width="200dp"
                             android:layout_height="225dp"
-                            android:src="@drawable/today3"/>
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/today3" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
 
-
-             </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp">
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -139,45 +142,46 @@
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
-            <LinearLayout
-            android:layout_marginTop="20dp"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-            android:orientation="horizontal">
-                 <ImageView
-                     android:scaleType="fitXY"
-                     android:layout_width="150dp"
-                     android:layout_height="225dp"
-                     android:src="@drawable/home1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/home1" />
 
 
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/home2" />
 
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:scaleType="fitXY"
-                    android:layout_width="150dp"
-                    android:layout_height="225dp"
-                    android:src="@drawable/home2"/>
+                        <ImageView
 
-             <ImageView
-
-                 android:id="@+id/btn_hacking"
-                android:layout_marginLeft="10dp"
-                android:scaleType="fitXY"
-                android:layout_width="200dp"
-                android:layout_height="225dp"
-                android:src="@drawable/hacking1"/>
-                </LinearLayout>
+                            android:id="@+id/btn_hacking"
+                            android:layout_width="200dp"
+                            android:layout_height="225dp"
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/hacking1" />
+                    </LinearLayout>
                 </HorizontalScrollView>
 
 
-
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp">
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -185,46 +189,47 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/menu2"
                     android:text="최신 전시"
-                   android:textColor="@color/black"
+                    android:textColor="@color/black"
                     android:textSize="15dp" />
+
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
+
                     <LinearLayout
-                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
                         android:orientation="horizontal">
+
                         <ImageView
-                            android:scaleType="fitXY"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
-                            android:src="@drawable/recent1"/>
-
+                            android:scaleType="fitXY"
+                            android:src="@drawable/recent1" />
 
 
                         <ImageView
-                            android:layout_marginLeft="10dp"
-                            android:scaleType="fitXY"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
-                            android:src="@drawable/recent2"/>
-
-                        <ImageView
                             android:layout_marginLeft="10dp"
                             android:scaleType="fitXY"
+                            android:src="@drawable/recent2" />
+
+                        <ImageView
                             android:layout_width="200dp"
                             android:layout_height="225dp"
-                            android:src="@drawable/recent3"/>
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/recent3" />
                     </LinearLayout>
                 </HorizontalScrollView>
-
 
 
             </LinearLayout>
 
 
-</LinearLayout>
+        </LinearLayout>
 
 
     </ScrollView>

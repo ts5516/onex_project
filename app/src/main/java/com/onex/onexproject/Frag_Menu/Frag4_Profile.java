@@ -31,6 +31,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.onex.onexproject.Adapter.ProfileAdapter;
 import com.onex.onexproject.Adapter.SearchAdapter;
@@ -53,7 +54,7 @@ public class Frag4_Profile extends Fragment {
     private DocumentReference doref;
     private TextView userName, userFollower, userFollowing;
     private CircleImageView cirImage;
-    private Button profileSetBtn;
+    private Button profileSetBtn, logoutBtn;
     MenuActivity activity;
 
     public void onAttach(Context context) {
@@ -78,7 +79,7 @@ public class Frag4_Profile extends Fragment {
         cirImage = view.findViewById(R.id.PFUserImage);
         profileSetBtn = view.findViewById(R.id.PFsetBtn);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        Button logoutbtn = view.findViewById(R.id.button2);
+        logoutBtn = view.findViewById(R.id.button3);
         if(firebaseUser != null){
             db = FirebaseFirestore.getInstance();
             doref = db.collection("users").document(firebaseUser.getUid());
@@ -94,25 +95,6 @@ public class Frag4_Profile extends Fragment {
             });
        //     doref = db.collection("Follow").document(firebaseUser.getUid()).collection("followers").
 
-        }else{
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-            dialog.setTitle(R.string.logintitle);
-            dialog.setMessage(R.string.loginMessage);
-            dialog.setNeutralButton("확인", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
-                    activity.bottomNavigationView.setSelectedItemId(R.id.action_home);
-                }
-            });
-            dialog.setPositiveButton("취소", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    activity.bottomNavigationView.setSelectedItemId(R.id.action_home);
-
-                }
-            });
-            dialog.create().show();
         }
 
         FragmentManager fm = getFragmentManager();
@@ -126,10 +108,9 @@ public class Frag4_Profile extends Fragment {
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
 
                 switch (position){
-                    case 0:{
+                    case 0:
                         tab.setText("소개");
                         break;
-                    }
                     case 1:
                         tab.setText("작품");
                         break;
@@ -148,15 +129,18 @@ public class Frag4_Profile extends Fragment {
         profileSetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int num = 3069; num <= 3073; num++){
-                    StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/전시 이미지/IMG_3069.JPG");
-                    String imageName = "IMG_" + num + ".JPG";
-                    doref = db.collection("users").document(firebaseUser.getUid()).collection("artPiece").document(imageName);
-                    storageReference.getDownloadUrl()
-                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/전시 이미지");
+
+                storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        for (StorageReference item: listResult.getItems()) {
+
+                            item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-
+                                    doref = db.collection("users").
+                                            document(firebaseUser.getUid()).collection("artPiece").document(item.getName());
                                     Map<String, Object> exhibition = new HashMap<>();
                                     exhibition.put("uri", uri.toString());
                                     exhibition.put("size", "");
@@ -164,12 +148,13 @@ public class Frag4_Profile extends Fragment {
                                     doref.set(exhibition);
                                 }
                             });
-
-                }
+                        }
+                    }
+                });
             }
         });
 
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
@@ -177,4 +162,5 @@ public class Frag4_Profile extends Fragment {
         });
         return view;
     }
+
 }

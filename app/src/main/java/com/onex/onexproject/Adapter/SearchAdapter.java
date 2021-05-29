@@ -24,13 +24,13 @@ public class SearchAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 0:
-                return new searchUserFragment();
+                return new searchPopularityFragment();
             case 1:
-                return new searchExhibitionFragment();
+                return new searchUserFragment();
             case 2:
                 return new searchTagFragment();
             default:
-                return new searchPopularityFragment();
+                return new searchExhibitionFragment();
 
         }
     }

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/PFUserImage"
@@ -33,7 +34,6 @@
         android:id="@+id/SeUserDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/SeUserName"
         app:layout_constraintTop_toBottomOf="@+id/SeUserName" />

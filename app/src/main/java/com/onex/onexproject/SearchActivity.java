@@ -29,17 +29,17 @@ public class SearchActivity extends AppCompatActivity {
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
                 switch (position){
                     case 0:{
-                        tab.setText("유저");
+                        tab.setText("인기");
                         break;
                     }
                     case 1:
-                        tab.setText("전시회");
+                        tab.setText("유저");
                         break;
                     case 2:
                         tab.setText("태그");
                         break;
                     case 3:
-                        tab.setText("인기");
+                        tab.setText("전시회");
                         break;
                 }
             }

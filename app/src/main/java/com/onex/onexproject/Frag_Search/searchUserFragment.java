@@ -1,5 +1,6 @@
 package com.onex.onexproject.Frag_Search;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -24,7 +26,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.onex.onexproject.Adapter.UserAdapter;
+import com.onex.onexproject.Frag_Menu.Frag4_Profile;
 import com.onex.onexproject.Model.User;
+import com.onex.onexproject.Profile;
 import com.onex.onexproject.R;
 import com.squareup.picasso.Picasso;
 
@@ -33,11 +37,18 @@ import org.jetbrains.annotations.NotNull;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class searchUserFragment extends Fragment {
-    private OnItemClickListener listener;
+public class searchUserFragment extends Fragment implements  UserAdapter.OnItemClickListener {
     private RecyclerView userRecycler;
     private FirebaseFirestore firestore;
+
+
     private UserAdapter adapter;
+
+    @Override
+    public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+    }
+
     private EditText searchBar;
     private String TAG = "searchUserFrag";
     private ViewGroup view;
@@ -86,6 +97,8 @@ public class searchUserFragment extends Fragment {
         return view;
     }
 
+
+
     private void setUpReyclerView(){
         Query query = firestore.collection("users").orderBy("name");
         FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
@@ -96,15 +109,16 @@ public class searchUserFragment extends Fragment {
         userRecycler.setHasFixedSize(true);
         userRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
         userRecycler.setAdapter(adapter);
-    }
 
-
-    public interface OnItemClickListener{
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.listener = listener;
+        adapter.setOnItemClickListener(new UserAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String id = documentSnapshot.getId();
+                Intent intent = new Intent(getActivity().getApplicationContext(), Profile.class);
+                intent.putExtra("profileId", id.toString());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
