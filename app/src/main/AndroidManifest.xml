@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnexProject">
-        <activity android:name=".Exhibition_hacking3"></activity>
+        <activity android:name=".ArtinfoActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Exhibition_hacking3" />
         <activity android:name=".Exhibition_hacking2" />
         <activity android:name=".Exhibition_hacking" />
         <activity
@@ -21,14 +23,16 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MenuActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SearchActivity"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".Register" />
         <activity
             android:name=".LoginActivity"

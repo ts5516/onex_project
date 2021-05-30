@@ -5,13 +5,15 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/art_image"
+        android:id="@+id/artPiece"
         android:layout_width="135dp"
         android:layout_height="135dp"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"
+        android:transitionName="expandArt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

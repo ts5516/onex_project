@@ -42,7 +42,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
         holder.userName.setText(model.getName());
         holder.userDesc.setText(model.getDescription());
         if(model.getImageUri() == null)
-            holder.userImage.setImageResource(R.drawable.outline_account_circle_24);
+            holder.userImage.setImageResource(R.drawable.user_sample);
         else
             Glide.with(holder.itemView).load(model.getImageUri()).into(holder.userImage);
     }

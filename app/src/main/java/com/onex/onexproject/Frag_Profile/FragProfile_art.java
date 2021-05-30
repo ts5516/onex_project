@@ -1,52 +1,48 @@
 package com.onex.onexproject.Frag_Profile;
 
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.onex.onexproject.Frag_Search.searchUserFragment;
+import com.onex.onexproject.Adapter.ArtAdapter;
+import com.onex.onexproject.Adapter.UserAdapter;
+import com.onex.onexproject.ArtinfoActivity;
 import com.onex.onexproject.Model.Post;
-import com.onex.onexproject.Model.User;
+import com.onex.onexproject.Profile;
 import com.onex.onexproject.R;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class FragProfile_art extends Fragment {
     private View view;
-    private FirestoreRecyclerAdapter adapter;
+    private ArtAdapter adapter;
     private FirebaseFirestore firestore;
     private DocumentReference doref;
     private RecyclerView imageRecycler;
     private Query query;
+
+
+
     public FragProfile_art(){
 
     }
@@ -65,20 +61,7 @@ public class FragProfile_art extends Fragment {
                 .setQuery(query, Post.class)
                 .build();
 
-        adapter = new FirestoreRecyclerAdapter<Post, FragProfile_art.ImageViewHolder>(options) {
-            @NonNull
-            @NotNull
-            @Override
-            public FragProfile_art.ImageViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-                View userView = LayoutInflater.from(parent.getContext()).inflate(R.layout.profile_art_item, parent, false);
-                return new FragProfile_art.ImageViewHolder(userView);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull @NotNull FragProfile_art.ImageViewHolder holder, int position, @NonNull @NotNull Post model) {
-                Glide.with(view).load(model.getUri()).override(300, 300).into(holder.image);
-            }
-        };
+        adapter = new ArtAdapter(options);
 
         GridLayoutManager glm = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
         imageRecycler.setHasFixedSize(true);
@@ -86,18 +69,17 @@ public class FragProfile_art extends Fragment {
         imageRecycler.addItemDecoration(new GridSpacingItemDecoration(3, 15, false));
         imageRecycler.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(new ArtAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position, ImageView imageView) {
+                String id = documentSnapshot.getId();
+                Intent intent = new Intent(getActivity(), ArtinfoActivity.class);
+                intent.putExtra("artID", id.toString());
+                startActivity(intent);
+            }
+        });
 
         return view;
-    }
-
-    private class ImageViewHolder extends RecyclerView.ViewHolder {
-
-        private ImageView image;
-        public ImageViewHolder(@NonNull @NotNull View itemView) {
-            super(itemView);
-
-            image = itemView.findViewById(R.id.art_image);
-        }
     }
 
     @Override
