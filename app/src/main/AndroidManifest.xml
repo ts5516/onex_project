@@ -15,12 +15,13 @@
         android:theme="@style/Theme.OnexProject">
         <activity android:name=".ArtinfoActivity"
             android:theme="@style/AppTheme"></activity>
+        <activity android:name=".PostActivity"></activity>
         <activity android:name=".Exhibition_hacking3" />
         <activity android:name=".Exhibition_hacking2" />
         <activity android:name=".Exhibition_hacking" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

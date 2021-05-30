@@ -1,6 +1,7 @@
 package com.onex.onexproject.Frag_Menu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.onex.onexproject.MenuActivity;
+import com.onex.onexproject.PostActivity;
 import com.onex.onexproject.R;
 
 
@@ -25,6 +27,7 @@ public class Frag1_Home extends Fragment {
     MenuActivity activity;
     ImageView btn_exhibit;
     ImageView btn_creator;
+    ImageView btn_post;
 
     public void onAttach(Context context) {
 
@@ -64,7 +67,7 @@ public class Frag1_Home extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.menu_frag_home, container, false);
         btn_exhibit = (ImageView) rootView.findViewById(R.id.btn_exhibition);
         btn_creator = (ImageView) rootView.findViewById(R.id.btn_creator);
-
+        btn_post = (ImageView)rootView.findViewById(R.id.btn_post);
 
 
 
@@ -79,6 +82,14 @@ public class Frag1_Home extends Fragment {
             @Override
             public void onClick(View view) {
                 activity.bottomNavigationView.setSelectedItemId(R.id.action_creator);
+            }
+        });
+        btn_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(activity.getApplicationContext(), PostActivity.class);
+                startActivity(intent);
+
             }
         });
 
