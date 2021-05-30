@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:orientation="vertical">
+
+
 
 
     <ScrollView
@@ -16,22 +18,24 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="23dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
+
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/title_english"
-                android:text="ONEX"
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/black"
-
-                android:textSize="30dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ONEX"
+                android:fontFamily="@font/title_english"
+                android:textSize="30dp"
+                />
 
 
             <ImageView
@@ -39,148 +43,162 @@
                 android:id="@+id/btn_exhibition"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
-                android:src="@drawable/ic_exhibition3" />
+                android:src="@drawable/ic_exhibition3"
+                />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/menu"
+                android:textSize="18dp"
+
                 android:text="인기 전시 TOP3"
-                android:textColor="@color/black"
-
-                android:textSize="15dp" />
-
+                />
             <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                >
                 <ImageView
+                    android:src="@drawable/home1"
                     android:id="@+id/home_1"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home1" />
+                    android:layout_height="200dp"
+                    />
 
                 <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/home2"
                     android:id="@+id/home_2"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home2" />
-
+                    android:layout_height="200dp"
+                    />
                 <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/home3"
                     android:id="@+id/home_3"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home3" />
+                    android:layout_height="200dp"
+                    />
             </LinearLayout>
-
             <ImageView
+                android:src="@drawable/creator"
                 android:id="@+id/btn_creator"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/creator2" />
-
+                />
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/menu"
+                android:textSize="18dp"
                 android:text="인기 작품 TOP3"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-
+                />
             <LinearLayout
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                >
                 <ImageView
 
+                    android:src = "@drawable/home4"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home4" />
+                    android:layout_height="150dp"
+                    />
 
                 <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+
+                    android:src = "@drawable/home5"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home5" />
+                    android:layout_height="150dp" />
 
                 <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:src = "@drawable/home6"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home6" />
+                    android:layout_height="150dp"
+                    />
             </LinearLayout>
-
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/menu"
+                android:textSize="18dp"
                 android:text="전시 포스트"
-                android:textColor="@color/black"
-                android:textSize="15dp"
 
                 />
-
             <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                >
                 <ImageView
 
+                    android:src ="@drawable/home7"
                     android:layout_width="0dp"
-                    android:layout_height="250dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home7" />
+                    android:layout_height="250dp"
+                    />
 
                 <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="250dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/home8" />
-
-                <ImageView
+                    android:src="@drawable/home8"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
+                    android:layout_weight="1" />
+
+                <ImageView
                     android:layout_marginLeft="10dp"
+                    android:src="@drawable/home9"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:src="@drawable/home9" />
+                    android:layout_height="250dp"
+                    />
             </LinearLayout>
-
             <TextView
-                android:layout_width="match_parent"
-
-                android:layout_height="match_parent"
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-black"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/menu"
+                android:textSize="18dp"
                 android:text="#HOT #HASHTAG"
-                android:textSize="15dp"
 
                 />
-
             <ImageView
+                android:src="@drawable/home10"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:src="@drawable/home10"
 
                 />
+
 
 
         </LinearLayout>
