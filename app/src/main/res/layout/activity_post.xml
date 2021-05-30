@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".PostActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,9 +23,9 @@
             <ImageView
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="50dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/post0"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/post2"
                 />
 
             <LinearLayout
@@ -30,10 +35,39 @@
                 android:layout_height="wrap_content"
                 android:background="@color/light_gray">
                 <ImageView
-
-                    android:src="@drawable/post2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/post3"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"/>
+               <View
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@color/black"/>
+                <ImageView
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/post4"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"/>
+                    android:layout_height="70dp"/>
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/post5"
+                    android:layout_width="match_parent"
+                    android:layout_height="330dp"/>
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/post8"
+                    android:layout_width="match_parent"
+                    android:layout_height="325dp"/>
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/post7"
+                    android:layout_width="match_parent"
+                    android:layout_height="325dp"/>
 
 
 
@@ -42,7 +76,13 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-
+        <ImageView
+            android:layout_gravity="bottom|center_horizontal"
+android:layout_marginLeft="170dp"
+            android:layout_marginBottom="150dp"
+            android:src="@drawable/post9"
+            android:layout_width="60dp"
+            android:layout_height="50dp"/>
+    </FrameLayout>
 
 </LinearLayout>

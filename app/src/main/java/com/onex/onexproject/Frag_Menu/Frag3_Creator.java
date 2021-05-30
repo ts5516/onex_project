@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.onex.onexproject.CreatorPagerAdapter;
+import com.onex.onexproject.Creator_lemon;
 import com.onex.onexproject.Exhibition_hacking;
 import com.onex.onexproject.R;
 import com.onex.onexproject.SearchActivity;
@@ -23,7 +24,6 @@ import com.onex.onexproject.ViewPagerAdapter;
 import com.pm10.library.LineIndicator;
 
 public class Frag3_Creator extends Fragment {
-    ImageView button;
     Activity activity;
     Context context;
     CreatorPagerAdapter adapter;
@@ -34,6 +34,16 @@ public class Frag3_Creator extends Fragment {
         rootView = (ViewGroup) inflater.inflate(R.layout.menu_frag_creator, container, false);
         activity =getActivity();
         context =getContext();
+        btn_lemon = (ImageView)rootView.findViewById(R.id.btn_lemon);
+        btn_lemon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity.getApplicationContext(), Creator_lemon.class);
+                startActivity(intent);
+                activity.finish();
+            }
+        });
+
         viewPager = rootView.findViewById(R.id.viewPager3);
         adapter = new CreatorPagerAdapter(context);
         viewPager.setAdapter(adapter);

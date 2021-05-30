@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class CreatorPagerAdapter extends PagerAdapter {
     private LayoutInflater inflater;
     private final int[] images = {
-            R.drawable.creator,
+            R.drawable.creator2,
             R.drawable.creator3,
             R.drawable.creator4,
             R.drawable.creator5,
