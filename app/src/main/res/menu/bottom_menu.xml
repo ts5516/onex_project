@@ -3,22 +3,22 @@
     <item
         android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/ic_frag1"
+        android:icon="@drawable/ic_selected_1"
         android:title="home"/>
     <item
         android:id="@+id/action_exhibition"
         android:enabled="true"
-        android:icon="@drawable/ic_frag2"
+        android:icon="@drawable/ic_unselected_2"
         android:title="exhibition"/>
     <item
         android:id="@+id/action_creator"
         android:enabled="true"
-        android:icon="@drawable/ic_frag3"
+        android:icon="@drawable/ic_unselected_3"
         android:title="creator"/>
     <item
         android:id="@+id/action_login"
         android:enabled="true"
-        android:icon="@drawable/ic_frag4"
-        android:title="login"/>
+        android:icon="@drawable/ic_unselected_4"
+        android:title="My Page"/>
 
 </menu>

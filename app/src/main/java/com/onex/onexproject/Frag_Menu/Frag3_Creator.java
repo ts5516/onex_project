@@ -40,7 +40,6 @@ public class Frag3_Creator extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(activity.getApplicationContext(), Creator_lemon.class);
                 startActivity(intent);
-                activity.finish();
             }
         });
 

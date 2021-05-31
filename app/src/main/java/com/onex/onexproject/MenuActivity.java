@@ -36,21 +36,39 @@ public class MenuActivity extends AppCompatActivity {
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);
+        menu=bottomNavigationView.getMenu();
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //NavigationItemSelecte
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
                         setFrag(0);
+                        menuItem.setIcon(R.drawable.ic_selected_1);
+                        menu.findItem(R.id.action_exhibition).setIcon(R.drawable.ic_unselected_2);
+                        menu.findItem(R.id.action_creator).setIcon(R.drawable.ic_unselected_3);
+                        menu.findItem(R.id.action_login).setIcon(R.drawable.ic_unselected_4);
                         break;
                     case R.id.action_exhibition:
                         setFrag(1);
+                        menuItem.setIcon(R.drawable.ic_selected_2);
+                        menu.findItem(R.id.action_home).setIcon(R.drawable.ic_unselected_1);
+                        menu.findItem(R.id.action_creator).setIcon(R.drawable.ic_unselected_3);
+                        menu.findItem(R.id.action_login).setIcon(R.drawable.ic_unselected_4);
                         break;
                     case R.id.action_creator:
                         setFrag(2);
+                        menuItem.setIcon(R.drawable.ic_selected_3);
+                        menu.findItem(R.id.action_home).setIcon(R.drawable.ic_unselected_1);
+                        menu.findItem(R.id.action_exhibition).setIcon(R.drawable.ic_unselected_2);
+                        menu.findItem(R.id.action_login).setIcon(R.drawable.ic_unselected_4);
                         break;
                     case R.id.action_login:
                         setFrag(3);
+                        menuItem.setIcon(R.drawable.ic_selected_4);
+                        menu.findItem(R.id.action_home).setIcon(R.drawable.ic_unselected_1);
+                        menu.findItem(R.id.action_exhibition).setIcon(R.drawable.ic_unselected_2);
+                        menu.findItem(R.id.action_creator).setIcon(R.drawable.ic_unselected_3);
                         break;
                 }
 
