@@ -127,7 +127,7 @@ public class Frag4_Profile extends Fragment {
         profileSetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태소개/은태프사.png");
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태소개/은태프사.jpg");
 
                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
