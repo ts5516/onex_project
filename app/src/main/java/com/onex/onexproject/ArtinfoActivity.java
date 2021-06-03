@@ -37,7 +37,7 @@ public class ArtinfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String artID = intent.getStringExtra("artID");
-
+        String profileID = intent.getStringExtra("profileID");
         artLike = findViewById(R.id.artLike);
         artImage = findViewById(R.id.artImage);
         artTitle = findViewById(R.id.artTitle);
@@ -48,13 +48,17 @@ public class ArtinfoActivity extends AppCompatActivity {
         artType = findViewById(R.id.artType);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
-        ref = db.collection("users").document(firebaseUser.getUid());
-        ref.collection("artPiece").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        ref = db.collection("users").document(profileID);
+        if(firebaseUser != null){
+            if(!profileID.equals(firebaseUser.getUid())){
+                ref.collection("artPiece").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
                             Glide.with(getApplicationContext()).load(task.getResult().get("uri").toString()).into(artImage);
-                            ref.collection("likes").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            db.collection("users").document(firebaseUser.getUid()).
+                                    collection("likes").document(artID).get().
+                                    addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                                     if(task.getResult().getId().equals(artID)){
@@ -65,6 +69,19 @@ public class ArtinfoActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+            else{
+                artLike.setVisibility(View.GONE);
+                ref.collection("artPiece").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            Glide.with(getApplicationContext()).load(task.getResult().get("uri").toString()).into(artImage);
+                        }
+                    }
+                });
+            }
+        }
 
         artLike.setOnClickListener(new View.OnClickListener() {
             @Override

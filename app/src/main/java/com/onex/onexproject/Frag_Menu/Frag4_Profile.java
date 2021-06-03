@@ -68,6 +68,10 @@ public class Frag4_Profile extends Fragment {
         super.onDetach();
         activity = null;
     }
+
+    public String getID(){
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -79,7 +83,6 @@ public class Frag4_Profile extends Fragment {
         cirImage = view.findViewById(R.id.PFUserImage);
         profileSetBtn = view.findViewById(R.id.PFsetBtn);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        logoutBtn = view.findViewById(R.id.button3);
         if(firebaseUser != null){
             db = FirebaseFirestore.getInstance();
             doref = db.collection("users").document(firebaseUser.getUid());
@@ -151,13 +154,6 @@ public class Frag4_Profile extends Fragment {
                         }
                     }
                 });
-            }
-        });
-
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
             }
         });
         return view;

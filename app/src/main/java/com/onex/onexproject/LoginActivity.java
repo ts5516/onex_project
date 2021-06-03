@@ -130,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, getString(R.string.loginSuccess), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                            finish();
                         }else{
                             Toast.makeText(LoginActivity.this, getString(R.string.failLogin), Toast.LENGTH_SHORT).show();
                             activityLoginBinding.loadingLogin.setVisibility(View.INVISIBLE);

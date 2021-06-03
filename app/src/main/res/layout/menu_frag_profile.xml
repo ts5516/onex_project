@@ -27,7 +27,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_height="115dp"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingTop="20dp">
@@ -36,7 +36,6 @@
             android:id="@+id/PFUserImage"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:src="@drawable/temp_profile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +43,9 @@
             android:id="@+id/PFsetBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:fontFamily="@font/body"
             android:text="@string/profileSet"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,18 +54,19 @@
             android:id="@+id/PFuserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/body"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/PFUserImage"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/PFUserImage"
-            app:layout_constraintTop_toBottomOf="@+id/PFUserImage" />
+            app:layout_constraintStart_toEndOf="@+id/PFUserImage"
+            app:layout_constraintTop_toTopOf="@+id/PFUserImage" />
 
         <TextView
             android:id="@+id/PFuserfollower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:fontFamily="@font/body"
             android:text="0"
             app:layout_constraintBottom_toBottomOf="@+id/txtFollow"
             app:layout_constraintStart_toEndOf="@+id/txtFollow" />
@@ -73,7 +75,8 @@
             android:id="@+id/PFuserfollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/body"
             android:text="0"
             app:layout_constraintEnd_toEndOf="@+id/PFuserName"
             app:layout_constraintHorizontal_bias="0.0"
@@ -85,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
+            android:fontFamily="@font/body"
             android:text="팔로워"
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollower"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollower" />
@@ -94,20 +98,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
+            android:fontFamily="@font/body"
             android:text="팔로잉"
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollowing"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollowing" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="로그아웃"
-            app:layout_constraintEnd_toEndOf="@+id/PFsetBtn"
-            app:layout_constraintHorizontal_bias="0.664"
-            app:layout_constraintStart_toStartOf="@+id/PFsetBtn"
-            app:layout_constraintTop_toBottomOf="@+id/PFsetBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

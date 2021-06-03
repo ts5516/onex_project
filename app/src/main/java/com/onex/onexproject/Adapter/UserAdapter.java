@@ -40,7 +40,10 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
     @Override
     protected void onBindViewHolder(@NonNull @NotNull UserViewHolder holder, int position, @NonNull @NotNull User model) {
         holder.userName.setText(model.getName());
-        holder.userDesc.setText(model.getDescription());
+        if(model.getDescription() != null && model.getDescription().length() > 20)
+        holder.userDesc.setText(model.getDescription().substring(0, 20) + "...");
+        else
+            holder.userDesc.setText(model.getDescription());
         if(model.getImageUri() == null)
             holder.userImage.setImageResource(R.drawable.user_sample);
         else
