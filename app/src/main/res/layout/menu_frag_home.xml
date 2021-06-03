@@ -5,6 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:fontFamily="@font/title_english"
+            android:text="ONEX"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
 
 
 
@@ -23,20 +43,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-
-
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ONEX"
-                android:fontFamily="@font/title_english"
-                android:textSize="30dp"
-                />
-
 
             <ImageView
 

@@ -4,17 +4,17 @@
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_selected_1"
-        android:title="home"/>
+        android:title="Home"/>
     <item
         android:id="@+id/action_exhibition"
         android:enabled="true"
         android:icon="@drawable/ic_unselected_2"
-        android:title="exhibition"/>
+        android:title="Exhibition"/>
     <item
         android:id="@+id/action_creator"
         android:enabled="true"
         android:icon="@drawable/ic_unselected_3"
-        android:title="creator"/>
+        android:title="Creator"/>
     <item
         android:id="@+id/action_login"
         android:enabled="true"
