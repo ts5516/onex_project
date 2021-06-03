@@ -35,6 +35,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 import com.onex.onexproject.Adapter.ProfileAdapter;
 import com.onex.onexproject.databinding.ProfileActivityBinding;
 
@@ -49,7 +52,10 @@ public class Profile extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
     DocumentReference doref, followerRef, followingRef;
-
+    String profileId = null;
+    public String getID(){
+        return profileId;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +64,12 @@ public class Profile extends AppCompatActivity {
         setContentView(view);
 
         Intent intent = getIntent();
-        String profileId = intent.getStringExtra("profileId");
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        profileId  = intent.getStringExtra("profileId");
+
         db = FirebaseFirestore.getInstance();
         doref = db.collection("users").document(profileId);
         followerRef = db.collection("users").document(profileId);
-        followingRef = db.collection("users").document(firebaseUser.getUid());
+
         isFollowing(profileId, activityProfileBinding.PFsetBtn);
 
         doref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -71,10 +77,11 @@ public class Profile extends AppCompatActivity {
             public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot = task.getResult();
+                    String id = documentSnapshot.get("name").toString();
                     activityProfileBinding.PFuserName.setText(documentSnapshot.get("name").toString());
                     Glide.with(view).load(documentSnapshot.get("imageUri").toString()).into(
                             activityProfileBinding.PFUserImage);
-                    followingRef.collection("following").document("counter").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    doref.collection("following").document("counter").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                             if(task.isSuccessful()){
@@ -99,33 +106,38 @@ public class Profile extends AppCompatActivity {
         activityProfileBinding.PFsetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String btn = activityProfileBinding.PFsetBtn.getText().toString();
-                Query query;
-                if(btn.equals(getString(R.string.follow))){
-                    // 사용자를 팔로우 한다.
-                    followingRef.collection("following").add(profileId);
-                    followingRef.collection("following").document("counter").update("count", FieldValue.increment(1));
+                if(FirebaseAuth.getInstance().getCurrentUser() != null){
+                    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    followingRef = db.collection("users").document(firebaseUser.getUid());
+                    String btn = activityProfileBinding.PFsetBtn.getText().toString();
+                    Query query;
+                    if(btn.equals(getString(R.string.follow))){
+                        // 사용자를 팔로우 한다.
+                        followingRef.collection("following").add(profileId);
+                        followingRef.collection("following").document("counter").update("count", FieldValue.increment(1));
 
-                    followerRef.collection("followers").add(firebaseUser.getUid());
-                    followerRef.collection("followers").document("counter").update("count", FieldValue.increment(1));
-                }else if (btn.equals(getString(R.string.following))){
-                    //팔로우를 해제한다.
-                    followingRef.collection("following").document(profileId).delete();
-                    followingRef.collection("following").document("counter").update("count", FieldValue.increment(-1));
+                        followerRef.collection("followers").add(firebaseUser.getUid());
+                        followerRef.collection("followers").document("counter").update("count", FieldValue.increment(1));
+                    }else if (btn.equals(getString(R.string.following))){
+                        //팔로우를 해제한다.
+                        followingRef.collection("following").document(profileId).delete();
+                        followingRef.collection("following").document("counter").update("count", FieldValue.increment(-1));
 
-                    followerRef.collection("followers").document(firebaseUser.getUid()).delete();
-                    followerRef.collection("followers").document("counter").update("count", FieldValue.increment(-1));
-                }
-                followerRef.collection("follewers").document("counter").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                        if(task.isSuccessful()){
-                            activityProfileBinding.PFuserfollower.setText(task.getResult().get("count").toString());
-                        }
+                        followerRef.collection("followers").document(firebaseUser.getUid()).delete();
+                        followerRef.collection("followers").document("counter").update("count", FieldValue.increment(-1));
                     }
-                });
+                    followerRef.collection("follewers").document("counter").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                activityProfileBinding.PFuserfollower.setText(task.getResult().get("count").toString());
+                            }
+                        }
+                    });
+                }
             }
         });
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
 
         FragmentManager fm = getSupportFragmentManager();
         ViewPager2 viewPager2 = findViewById(R.id.PF_viewPager);
@@ -156,25 +168,57 @@ public class Profile extends AppCompatActivity {
         );
         tabLayoutMediator.attach();
 
+        activityProfileBinding.PFUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태");
+
+                storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        for (StorageReference item: listResult.getItems()) {
+
+                            item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    doref = db.collection("users").
+                                            document(profileId).collection("artPiece").document(item.getName());
+                                    Map<String, Object> exhibition = new HashMap<>();
+                                    exhibition.put("uri", uri.toString());
+                                    exhibition.put("size", "");
+                                    exhibition.put("tag","");
+                                    doref.set(exhibition);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void isFollowing(String profileId, Button button){
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        Query query = firestore.collection("Follow")
-                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .collection("following");
-        query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot item: queryDocumentSnapshots.getDocuments()) {
-                    if(item.toString().equals(profileId))
-                        button.setText(R.string.following);
-                    else
-                        button.setText(R.string.follow);
-                }
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            Query query = firestore.collection("Follow")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .collection("following");
+            query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot item: queryDocumentSnapshots.getDocuments()) {
+                        if(item.toString().equals(profileId))
+                            button.setText(R.string.following);
+                        else
+                            button.setText(R.string.follow);
+                    }
 
-            }
-        });
+                }
+            });
+        }
+        else
+            button.setText(R.string.follow);
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.onex.onexproject.Frag_Profile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import com.google.firebase.firestore.Query;
 import com.onex.onexproject.Adapter.ArtAdapter;
 import com.onex.onexproject.Adapter.UserAdapter;
 import com.onex.onexproject.ArtinfoActivity;
+import com.onex.onexproject.Frag_Menu.Frag4_Profile;
+import com.onex.onexproject.MenuActivity;
 import com.onex.onexproject.Model.Post;
 import com.onex.onexproject.Profile;
 import com.onex.onexproject.R;
@@ -41,11 +44,21 @@ public class FragProfile_art extends Fragment {
     private RecyclerView imageRecycler;
     private Query query;
 
+    private String profileID;
 
+    public FragProfile_art(){}
 
-    public FragProfile_art(){
+    public void onAttach(Context context) {
+
+        super.onAttach(context);
+        if(getActivity().getClass().getSimpleName().trim().equals("Profile"))
+            profileID = ((Profile)getActivity()).getID();
+
+        else
+            profileID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,8 +68,7 @@ public class FragProfile_art extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         imageRecycler = view.findViewById(R.id.art_recycler);
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Query query = firestore.collection("users").document(uid).collection("artPiece");
+        Query query = firestore.collection("users").document(profileID).collection("artPiece");
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
                 .setQuery(query, Post.class)
                 .build();
@@ -74,7 +86,8 @@ public class FragProfile_art extends Fragment {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position, ImageView imageView) {
                 String id = documentSnapshot.getId();
                 Intent intent = new Intent(getActivity(), ArtinfoActivity.class);
-                intent.putExtra("artID", id.toString());
+                intent.putExtra("artID", id);
+                intent.putExtra("profileID", profileID);
                 startActivity(intent);
             }
         });

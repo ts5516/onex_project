@@ -114,7 +114,7 @@ public class searchUserFragment extends Fragment implements  UserAdapter.OnItemC
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
                 Intent intent = new Intent(getActivity().getApplicationContext(), Profile.class);
-                intent.putExtra("profileId", id.toString());
+                intent.putExtra("profileId", id);
                 startActivity(intent);
             }
         });

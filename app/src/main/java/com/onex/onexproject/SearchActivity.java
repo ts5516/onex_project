@@ -33,7 +33,7 @@ public class SearchActivity extends AppCompatActivity {
                         break;
                     }
                     case 1:
-                        tab.setText("유저");
+                        tab.setText("작가");
                         break;
                     case 2:
                         tab.setText("태그");

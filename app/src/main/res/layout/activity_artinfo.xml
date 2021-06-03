@@ -20,9 +20,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/artBack"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/artText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+    <ImageView
         android:id="@+id/artShare"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/artLike"
@@ -30,8 +40,8 @@
 
     <ImageView
         android:id="@+id/artLike"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/artShare"
         app:layout_constraintTop_toTopOf="@+id/artText"
@@ -42,12 +52,11 @@
         android:layout_width="408dp"
         android:layout_height="245dp"
         android:layout_marginTop="80dp"
+        android:scaleType="centerCrop"
+        android:transitionName="expandArt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hacking9"
-        android:transitionName="expandArt"
-        android:scaleType="centerCrop"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/artTitle"
@@ -55,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/body"
+        android:fontFamily="@font/menu"
         android:text="파란 천, 바람 그리고 구름"
         android:textColor="#000000"
         android:textSize="25dp"

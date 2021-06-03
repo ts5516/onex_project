@@ -52,9 +52,9 @@ public class Frag4_Profile extends Fragment {
     private FirebaseFirestore db;
     private FirebaseUser firebaseUser;
     private DocumentReference doref;
-    private TextView userName, userFollower, userFollowing;
+    private TextView userName;
     private CircleImageView cirImage;
-    private Button profileSetBtn, logoutBtn;
+    private Button profileSetBtn;
     MenuActivity activity;
 
     public void onAttach(Context context) {
@@ -68,18 +68,19 @@ public class Frag4_Profile extends Fragment {
         super.onDetach();
         activity = null;
     }
+
+    public String getID(){
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.menu_frag_profile,container,false);
 
         userName = view.findViewById(R.id.PFuserName);
-        userFollower = view.findViewById(R.id.PFuserfollower);
-        userFollowing = view.findViewById(R.id.PFuserfollowing);
         cirImage = view.findViewById(R.id.PFUserImage);
         profileSetBtn = view.findViewById(R.id.PFsetBtn);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        logoutBtn = view.findViewById(R.id.button3);
         if(firebaseUser != null){
             db = FirebaseFirestore.getInstance();
             doref = db.collection("users").document(firebaseUser.getUid());
@@ -89,12 +90,9 @@ public class Frag4_Profile extends Fragment {
                     if(task.isSuccessful()){
                         DocumentSnapshot documentSnapshot = task.getResult();
                         userName.setText(documentSnapshot.get("name").toString());
-                        Glide.with(view).load(documentSnapshot.get("imageUri").toString()).into(cirImage);
                     }
                 }
             });
-       //     doref = db.collection("Follow").document(firebaseUser.getUid()).collection("followers").
-
         }
 
         FragmentManager fm = getFragmentManager();
@@ -129,38 +127,26 @@ public class Frag4_Profile extends Fragment {
         profileSetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/전시 이미지");
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태소개/은태프사.png");
 
-                storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
-                    public void onSuccess(ListResult listResult) {
-                        for (StorageReference item: listResult.getItems()) {
+                    public void onSuccess(Uri uri) {
+                        doref = db.collection("users").document(firebaseUser.getUid());
+                        Map<String, Object> uri2 = new HashMap<>();
+                        uri2.put("imageUri", uri.toString());
+                        uri2.put("name", "박은태");
+                        uri2.put("description", "여행의 야망, 순간으로 담다");
+                        doref.set(uri2);
 
-                            item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    doref = db.collection("users").
-                                            document(firebaseUser.getUid()).collection("artPiece").document(item.getName());
-                                    Map<String, Object> exhibition = new HashMap<>();
-                                    exhibition.put("uri", uri.toString());
-                                    exhibition.put("size", "");
-                                    exhibition.put("tag","");
-                                    doref.set(exhibition);
-                                }
-                            });
-                        }
                     }
                 });
+
             }
         });
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-            }
-        });
         return view;
+
     }
 
 }
