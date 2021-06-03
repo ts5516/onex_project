@@ -12,17 +12,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="280dp">
 
         <ImageView
-            android:id="@+id/PFbgImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/fui_idp_button_background_phone" />
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="391dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/user_back" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +34,7 @@
             android:id="@+id/PFUserImage"
             android:layout_width="75dp"
             android:layout_height="75dp"
+            android:src="@drawable/profile_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,10 +42,13 @@
             android:id="@+id/PFsetBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="48dp"
+            android:backgroundTint="#4C4848"
             android:fontFamily="@font/body"
             android:text="@string/profileSet"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,9 +57,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/body"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/menu"
             android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/PFUserImage"
             app:layout_constraintTop_toTopOf="@+id/PFUserImage" />
 
@@ -66,8 +71,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:fontFamily="@font/body"
-            android:text="0"
+            android:fontFamily="@font/menu"
+            android:text="3"
+            android:textColor="#000000"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/txtFollow"
             app:layout_constraintStart_toEndOf="@+id/txtFollow" />
 
@@ -76,8 +83,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/body"
-            android:text="0"
+            android:fontFamily="@font/menu"
+            android:text="21"
+            android:textColor="#000000"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/PFuserName"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/PFuserName"
@@ -90,6 +99,7 @@
             android:layout_marginStart="6dp"
             android:fontFamily="@font/body"
             android:text="팔로워"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollower"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollower" />
 
@@ -100,6 +110,7 @@
             android:layout_marginStart="6dp"
             android:fontFamily="@font/body"
             android:text="팔로잉"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollowing"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollowing" />
 
@@ -114,8 +125,12 @@
             android:id="@+id/PF_tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabSelectedTextColor="@color/black"
             app:tabIndicatorColor="@color/black"
             app:tabIndicatorHeight="2dp"/>
+
+        <View style="@style/Divider"
+            android:layout_above="@id/bottom_navigation_view" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

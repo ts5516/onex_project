@@ -7,6 +7,7 @@
     android:background="@color/white"
     tools:context=".MenuActivity">
 
+
     <FrameLayout
         android:id="@+id/layout_main_frame"
         android:layout_width="match_parent"
@@ -15,8 +16,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <View style="@style/Divider"
+        android:layout_above="@id/bottom_navigation_view" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

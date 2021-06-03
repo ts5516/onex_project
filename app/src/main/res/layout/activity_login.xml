@@ -26,6 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textColor="@color/black"
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/onex" />
 
     <EditText
+        android:textColor="@color/black"
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

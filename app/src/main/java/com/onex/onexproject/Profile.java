@@ -168,6 +168,33 @@ public class Profile extends AppCompatActivity {
         );
         tabLayoutMediator.attach();
 
+        activityProfileBinding.PFUserImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태");
+
+                storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        for (StorageReference item: listResult.getItems()) {
+
+                            item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    doref = db.collection("users").
+                                            document(profileId).collection("artPiece").document(item.getName());
+                                    Map<String, Object> exhibition = new HashMap<>();
+                                    exhibition.put("uri", uri.toString());
+                                    exhibition.put("size", "");
+                                    exhibition.put("tag","");
+                                    doref.set(exhibition);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void isFollowing(String profileId, Button button){

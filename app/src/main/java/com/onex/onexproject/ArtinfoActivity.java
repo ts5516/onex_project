@@ -30,6 +30,7 @@ public class ArtinfoActivity extends AppCompatActivity {
     DocumentReference ref;
     ImageView artImage, artLike;
     TextView artTitle, artSize, artShape, artWorkingYear, artTag, artType;
+    FirebaseUser firebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class ArtinfoActivity extends AppCompatActivity {
         artShape = findViewById(R.id.artShape);
         artTag = findViewById(R.id.artTag);
         artType = findViewById(R.id.artType);
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
         ref = db.collection("users").document(profileID);
         if(firebaseUser != null){
@@ -92,18 +93,19 @@ public class ArtinfoActivity extends AppCompatActivity {
     }
 
     private void isLikes(String artID, ImageView imageView){
-
-        ref.collection("likes").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DocumentReference ref2 = db.collection("users").document(firebaseUser.getUid());
+        ref2.collection("users").document(firebaseUser.getUid())
+                .collection("likes").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                 if(task.getResult().getId().equals(artID)){
-                    ref.collection("likes").document(artID).delete();
+                    ref2.collection("likes").document(artID).delete();
                     imageView.setImageResource(R.drawable.outline_favorite_border_24);
                 }
                 else{
                     Map<String, String> likes = new HashMap<>();
                     likes.put("uri", task.getResult().get("uri").toString());
-                    ref.collection("likes").document(artID).set(likes);
+                    ref2.collection("likes").document(artID).set(likes);
                     imageView.setImageResource(R.drawable.outline_favorite_24);
                 }
             }

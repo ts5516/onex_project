@@ -119,10 +119,13 @@
             android:id="@+id/PF_tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicator="@drawable/profile_indicator"
+            app:tabTextColor="@color/black"
             app:tabIndicatorColor="@color/black"
-            app:tabSelectedTextColor="@color/black"
-            app:tabTextColor="@color/black" />
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="@color/black" />
+
+        <View style="@style/Divider"
+            android:layout_above="@id/bottom_navigation_view" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
