@@ -25,8 +25,9 @@ public class TagAdapter extends FirestoreRecyclerAdapter<Tag, TagAdapter.TagView
 
     @Override
     protected void onBindViewHolder(@NonNull @NotNull TagViewHolder holder, int position, @NonNull @NotNull Tag model) {
-        holder.tagName.setText(model.getName());
-        holder.tagImage.setImageResource(R.drawable.round_tag_24);
+        holder.tagDetail.setText("게시물 100+");
+        holder.tagTitle.setText(model.getName());
+        holder.tagImage.setImageResource(R.drawable.hashtag);
     }
 
     @NonNull
@@ -39,13 +40,15 @@ public class TagAdapter extends FirestoreRecyclerAdapter<Tag, TagAdapter.TagView
 
     public class TagViewHolder extends RecyclerView.ViewHolder {
         private ImageView tagImage;
-        private TextView tagName;
+        private TextView tagTitle;
+        private TextView tagDetail;
 
         public TagViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
             tagImage = itemView.findViewById(R.id.exhibitImage);
-            tagName = itemView.findViewById(R.id.exhibitTitle);
+            tagTitle = itemView.findViewById(R.id.tag_title);
+            tagDetail =itemView.findViewById(R.id.tag_detail);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
