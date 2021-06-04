@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".SearchActivity">
 
     <EditText
@@ -17,10 +18,7 @@
         android:drawableLeft="@drawable/ic_baseline_search_24"
         android:ems="10"
         android:inputType="textVisiblePassword"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/searchTab"
@@ -28,23 +26,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:tabIndicatorColor="@color/black" />
+
+    <View style="@style/Divider"
+        android:layout_above="@id/bottom_navigation_view" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/search_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchTab">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
     </androidx.viewpager2.widget.ViewPager2>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -27,7 +27,7 @@
     <string name="changePWD">비밀번호가 성공적으로 변경되었습니다.</string>
     <string name="logintitle">로그인이 되어있지 않습니다.</string>
     <string name="loginMessage">로그인 하시겠습니까?</string>
-    <string name="gSingIn">구글 계정으로 로그인</string>
+    <string name="gSingIn">구글으로 로그인</string>
 
     //register
     <string name="name">이름</string>

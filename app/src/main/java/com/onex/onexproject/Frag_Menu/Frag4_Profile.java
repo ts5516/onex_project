@@ -123,22 +123,29 @@ public class Frag4_Profile extends Fragment {
         }
         );
         tabLayoutMediator.attach();
+
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         profileSetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태소개/은태프사.jpg");
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태소개");
 
-                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
                     @Override
-                    public void onSuccess(Uri uri) {
-                        doref = db.collection("users").document(firebaseUser.getUid());
-                        Map<String, Object> uri2 = new HashMap<>();
-                        uri2.put("imageUri", uri.toString());
-                        uri2.put("name", "박은태");
-                        uri2.put("description", "여행의 야망, 순간으로 담다");
-                        doref.set(uri2);
-
+                    public void onSuccess(ListResult listResult) {
+                        for(StorageReference item : listResult.getItems()){
+                            item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    doref = db.collection("exhibition").document(item.getName());
+                                    Map<String, Object> uri2 = new HashMap<>();
+                                    uri2.put("imageUri", uri.toString());
+                        //            uri2.put("name", "박은태");
+                         //           uri2.put("description", "여행의 야망, 순간으로 담다");
+                                    doref.set(uri2);
+                                }
+                            });
+                        }
                     }
                 });
 

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,9 +26,8 @@ public class TagAdapter extends FirestoreRecyclerAdapter<Tag, TagAdapter.TagView
 
     @Override
     protected void onBindViewHolder(@NonNull @NotNull TagViewHolder holder, int position, @NonNull @NotNull Tag model) {
-        holder.tagDetail.setText("게시물 100+");
         holder.tagTitle.setText(model.getName());
-        holder.tagImage.setImageResource(R.drawable.hashtag);
+        Glide.with(holder.itemView).load(model.getImageUri()).into(holder.tagImage);
     }
 
     @NonNull
@@ -41,15 +41,12 @@ public class TagAdapter extends FirestoreRecyclerAdapter<Tag, TagAdapter.TagView
     public class TagViewHolder extends RecyclerView.ViewHolder {
         private ImageView tagImage;
         private TextView tagTitle;
-        private TextView tagDetail;
 
         public TagViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
-            tagImage = itemView.findViewById(R.id.exhibitImage);
-            tagTitle = itemView.findViewById(R.id.tag_title);
-            tagDetail =itemView.findViewById(R.id.tag_detail);
-
+            tagImage = itemView.findViewById(R.id.tagImage);
+            tagTitle = itemView.findViewById(R.id.tagTitle);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

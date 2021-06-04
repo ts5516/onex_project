@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/exhibitImage"
+        android:id="@+id/tagImage"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="8dp"
@@ -18,15 +18,15 @@
         app:srcCompat="@drawable/round_place_24" />
 
     <TextView
-        android:id="@+id/exhibitTitle"
+        android:id="@+id/tagTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:text="제목"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/exhibitImage"
-        app:layout_constraintTop_toTopOf="@+id/exhibitImage" />
+        app:layout_constraintStart_toEndOf="@+id/tagImage"
+        app:layout_constraintTop_toTopOf="@+id/tagImage" />
 
     <TextView
         android:id="@+id/exhibitSubT"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="부제"
-        app:layout_constraintStart_toStartOf="@+id/exhibitTitle"
-        app:layout_constraintTop_toBottomOf="@+id/exhibitTitle" />
+        app:layout_constraintStart_toStartOf="@+id/tagTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tagTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

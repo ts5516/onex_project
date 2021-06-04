@@ -37,6 +37,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.onex.onexproject.Adapter.ProfileAdapter;
 import com.onex.onexproject.databinding.ProfileActivityBinding;
@@ -81,6 +82,8 @@ public class Profile extends AppCompatActivity {
                     activityProfileBinding.PFuserName.setText(documentSnapshot.get("name").toString());
                     Glide.with(view).load(documentSnapshot.get("imageUri").toString()).into(
                             activityProfileBinding.PFUserImage);
+                    Glide.with(view).load(documentSnapshot.get("b_image").toString()).into(
+                            activityProfileBinding.PFbgImage);
                     doref.collection("following").document("counter").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
@@ -171,7 +174,7 @@ public class Profile extends AppCompatActivity {
         activityProfileBinding.PFUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/박은태");
+                StorageReference storageReference = firebaseStorage.getReferenceFromUrl("gs://taesungislove.appspot.com/흠무새");
 
                 storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
                     @Override
@@ -183,11 +186,24 @@ public class Profile extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     doref = db.collection("users").
                                             document(profileId).collection("artPiece").document(item.getName());
-                                    Map<String, Object> exhibition = new HashMap<>();
-                                    exhibition.put("uri", uri.toString());
-                                    exhibition.put("size", "");
-                                    exhibition.put("tag","");
-                                    doref.set(exhibition);
+
+
+                                    item.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+                                        @Override
+                                        public void onSuccess(StorageMetadata storageMetadata) {
+                                            Map<String, Object> exhibition = new HashMap<>();
+                                            exhibition.put("uri", uri.toString());
+                                            exhibition.put("size", storageMetadata.getSizeBytes());
+                                            exhibition.put("createTime", storageMetadata.getCreationTimeMillis());
+                                            exhibition.put("name", "흠무새");
+                                            exhibition.put("type", "일러스트");
+                                            exhibition.put("shape", "가로형");
+                                            exhibition.put("tag","#illust #흠무새");
+                                            doref.set(exhibition);
+
+                                        }
+                                    });
+
                                 }
                             });
                         }

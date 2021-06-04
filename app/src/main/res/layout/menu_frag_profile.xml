@@ -12,14 +12,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp">
+        android:layout_height="200dp">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/PFBg_image"
             android:layout_width="wrap_content"
-            android:layout_height="391dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/user_back" />
     </LinearLayout>
 
@@ -57,9 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/menu"
-            android:text="TextView"
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -87,8 +86,6 @@
             android:text="21"
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/PFuserName"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/PFuserName"
             app:layout_constraintTop_toBottomOf="@+id/PFuserName" />
 
@@ -100,6 +97,7 @@
             android:fontFamily="@font/body"
             android:text="팔로워"
             android:textColor="#000000"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollower"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollower" />
 
@@ -111,6 +109,7 @@
             android:fontFamily="@font/body"
             android:text="팔로잉"
             android:textColor="#000000"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/PFuserfollowing"
             app:layout_constraintStart_toEndOf="@+id/PFuserfollowing" />
 
