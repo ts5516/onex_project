@@ -111,6 +111,10 @@ public class MenuActivity extends AppCompatActivity {
                         }
                         else {
                             setFrag(3);
+                            menuItem.setIcon(R.drawable.ic_selected_4);
+                            menu.findItem(R.id.action_home).setIcon(R.drawable.ic_unselected_1);
+                            menu.findItem(R.id.action_exhibition).setIcon(R.drawable.ic_unselected_2);
+                            menu.findItem(R.id.action_creator).setIcon(R.drawable.ic_unselected_3);
                             break;
                         }
                 }

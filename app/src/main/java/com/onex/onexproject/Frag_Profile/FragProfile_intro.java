@@ -30,7 +30,7 @@ import com.onex.onexproject.R;
 public class FragProfile_intro extends Fragment { //소개
     private View view;
     private String profileID;
-
+    private ImageView imageView;
     FirebaseFirestore db;
     RecyclerView imageRecycler;
     public FragProfile_intro() {}
@@ -39,17 +39,29 @@ public class FragProfile_intro extends Fragment { //소개
     public void onAttach(Context context) {
 
         super.onAttach(context);
-        if(getActivity().getClass().getSimpleName().trim().equals("Profile"))
-            profileID = ((Profile)getActivity()).getID();
 
-        else
+        if(getActivity().getClass().getSimpleName().trim().equals("Profile")) {
+            profileID = ((Profile) getActivity()).getID();
+
+        }
+        else {
             profileID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }
 
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.profile_frag_intro, container, false);
+        imageView = (ImageView)view.findViewById(R.id.imageView4);
+
+        if(profileID.equals("7DYai9s6G7QW7HFmQOnK68iyiI53"))
+        {imageView.setImageResource(R.drawable.intro_park);}
+        if(profileID.equals("PWpWz4i7W87ztsjP1iI7"))
+        { imageView.setImageResource(R.drawable.intro_hm);}
+
+
+
 
         return view;
     }

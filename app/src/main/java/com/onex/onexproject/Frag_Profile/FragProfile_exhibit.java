@@ -28,7 +28,7 @@ import com.onex.onexproject.R;
 
 public class FragProfile_exhibit extends Fragment {
     private View view;
-
+    private ImageView imageView;
     private String profileID;
 
     FirebaseFirestore db;
@@ -53,18 +53,16 @@ public class FragProfile_exhibit extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.profile_frag_exhibit, container, false);
         db = FirebaseFirestore.getInstance();
-        imageRecycler = view.findViewById(R.id.exhibitRecycle);
+        imageView =(ImageView)view.findViewById(R.id.imageView5);
 
         Query query = db.collection("users").document(profileID).collection("exhibition");
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
                 .setQuery(query, Post.class)
                 .build();
 
-        adapter = new ArtAdapter(options);
 
-        imageRecycler.setHasFixedSize(true);
-        imageRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        imageRecycler.setAdapter(adapter);
+
+
         return view;
     }
 }
