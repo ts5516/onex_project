@@ -60,6 +60,12 @@ public class ArtinfoActivity extends AppCompatActivity {
                     public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
                             Glide.with(getApplicationContext()).load(task.getResult().get("uri").toString()).into(artImage);
+                            artTitle.setText(task.getResult().get("name").toString());
+                            artShape.setText(task.getResult().get("shape").toString());
+                            artWorkingYear.setText(task.getResult().get("createTime").toString());
+                            artSize.setText(task.getResult().get("size").toString());
+                            artTag.setText(task.getResult().get("tag").toString());
+                            artType.setText(task.getResult().get("type").toString());
                             db.collection("users").document(firebaseUser.getUid()).
                                     collection("likes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
@@ -86,6 +92,12 @@ public class ArtinfoActivity extends AppCompatActivity {
                     public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
                             Glide.with(getApplicationContext()).load(task.getResult().get("uri").toString()).into(artImage);
+                            artTitle.setText(task.getResult().get("name").toString());
+                            artShape.setText(task.getResult().get("shape").toString());
+                            artWorkingYear.setText(task.getResult().get("createTime").toString());
+                            artSize.setText(task.getResult().get("size").toString());
+                            artTag.setText(task.getResult().get("tag").toString());
+                            artType.setText(task.getResult().get("type").toString());
                         }
                     }
                 });

@@ -27,7 +27,7 @@ public class TagAdapter extends FirestoreRecyclerAdapter<Tag, TagAdapter.TagView
     @Override
     protected void onBindViewHolder(@NonNull @NotNull TagViewHolder holder, int position, @NonNull @NotNull Tag model) {
         holder.tagTitle.setText(model.getName());
-        Glide.with(holder.itemView).load(model.getImageUri()).into(holder.tagImage);
+     //   Glide.with(holder.itemView).load(model.getImageUri()).into(holder.tagImage);
     }
 
     @NonNull
