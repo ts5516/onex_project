@@ -27,11 +27,11 @@
         android:fontFamily="@font/body"
         android:text="TextView"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tagImage"
         app:layout_constraintTop_toTopOf="@+id/tagImage"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintVertical_bias="0.121" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +32,7 @@ public class ArtinfoActivity extends AppCompatActivity {
     ImageView artImage, artLike;
     TextView artTitle, artSize, artShape, artWorkingYear, artTag, artType;
     FirebaseUser firebaseUser;
+    public boolean isLike;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class ArtinfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String artID = intent.getStringExtra("artID");
         String profileID = intent.getStringExtra("profileID");
+        isLike = false;
         artLike = findViewById(R.id.artLike);
         artImage = findViewById(R.id.artImage);
         artTitle = findViewById(R.id.artTitle);
@@ -58,12 +61,17 @@ public class ArtinfoActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Glide.with(getApplicationContext()).load(task.getResult().get("uri").toString()).into(artImage);
                             db.collection("users").document(firebaseUser.getUid()).
-                                    collection("likes").document(artID).get().
-                                    addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    collection("likes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
-                                public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                                    if(task.getResult().getId().equals(artID)){
-                                        artLike.setImageResource(R.drawable.outline_favorite_24);
+                                public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                                    QuerySnapshot querySnapshot = task.getResult();
+                                    for(DocumentSnapshot item : querySnapshot){
+                                        if(item.getId().equals(artID)){
+                                            artLike.setImageResource(R.drawable.outline_favorite_24);
+                                            isLike = true;
+                                        }
+
+
                                     }
                                 }
                             });
@@ -87,29 +95,30 @@ public class ArtinfoActivity extends AppCompatActivity {
         artLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isLikes(artID, artLike);
+                isLikes(artID, artLike, isLike);
+                isLike = !isLike;
             }
         });
     }
 
-    private void isLikes(String artID, ImageView imageView){
-        DocumentReference ref2 = db.collection("users").document(firebaseUser.getUid());
-        ref2.collection("users").document(firebaseUser.getUid())
-                .collection("likes").document(artID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                if(task.getResult().getId().equals(artID)){
-                    ref2.collection("likes").document(artID).delete();
-                    imageView.setImageResource(R.drawable.outline_favorite_border_24);
-                }
-                else{
+    private void isLikes(String artID, ImageView artLike, boolean isLike){
+        DocumentReference ref2 = db.collection("users").document(firebaseUser.getUid()).collection("likes").document(artID);
+        if(isLike){
+            ref2.delete();
+            artLike.setImageResource(R.drawable.outline_favorite_border_24);
+        }
+        else{
+            ref.collection("artPiece").document(artID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
                     Map<String, String> likes = new HashMap<>();
-                    likes.put("uri", task.getResult().get("uri").toString());
-                    ref2.collection("likes").document(artID).set(likes);
-                    imageView.setImageResource(R.drawable.outline_favorite_24);
+                    likes.put("uri", documentSnapshot.get("uri").toString());
+                    ref2.set(likes);
+                    artLike.setImageResource(R.drawable.outline_favorite_24);
+
                 }
-            }
-        });
+            });
+        }
     }
 
 

@@ -52,7 +52,7 @@
         android:layout_width="408dp"
         android:layout_height="245dp"
         android:layout_marginTop="80dp"
-        android:scaleType="centerCrop"
+        android:scaleType="center"
         android:transitionName="expandArt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
