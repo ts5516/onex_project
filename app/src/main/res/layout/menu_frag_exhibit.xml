@@ -17,25 +17,26 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
 
-        <TextView
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:fontFamily="@font/title_english"
-            android:text="Exhibition"
-            android:textColor="#000000"
-            android:textSize="30sp" />
+        <ImageView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/title2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
 
         <TextView
+            android:layout_gravity="right"
+            android:layout_marginRight="45dp"
             android:id="@+id/Serachbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="25dp"
+
             android:drawableRight="@drawable/ic_baseline_search_24" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
@@ -99,6 +100,7 @@
                     android:textSize="18dp" />
 
                 <HorizontalScrollView
+                    android:scrollbars="none"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
@@ -108,14 +110,16 @@
                         android:layout_marginTop="20dp"
                         android:orientation="horizontal">
 
+
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/today1" />
 
-
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
@@ -123,6 +127,7 @@
                             android:src="@drawable/today2" />
 
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
@@ -150,6 +155,7 @@
                     android:textSize="18dp" />
 
                 <HorizontalScrollView
+                    android:scrollbars="none"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
@@ -160,6 +166,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:scaleType="fitXY"
@@ -167,6 +174,7 @@
 
 
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
@@ -174,7 +182,7 @@
                             android:src="@drawable/home2" />
 
                         <ImageView
-
+                            android:background="@drawable/shadow"
                             android:id="@+id/btn_hacking"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
@@ -203,6 +211,7 @@
                     android:textSize="18dp" />
 
                 <HorizontalScrollView
+                    android:scrollbars="none"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
@@ -213,6 +222,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:scaleType="fitXY"
@@ -220,6 +230,7 @@
 
 
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
@@ -227,6 +238,7 @@
                             android:src="@drawable/recent2" />
 
                         <ImageView
+                            android:background="@drawable/shadow"
                             android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"

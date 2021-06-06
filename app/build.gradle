@@ -76,4 +76,6 @@ dependencies {
 
     //circle indicater
     implementation 'com.pm10:indicator:1.0.2'
+
+    implementation 'com.sdsmdg.harjot:materialshadows:1.2.5'
 }

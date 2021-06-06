@@ -9,6 +9,7 @@
     tools:context=".Exhibition_hacking3">
 
     <ScrollView
+        android:scrollbars="none"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -73,6 +74,14 @@
             <ImageView
                 android:adjustViewBounds="true"
                 android:id="@+id/hacking14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+            <ImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/hacking15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
