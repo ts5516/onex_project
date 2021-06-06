@@ -13,15 +13,13 @@
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
-        <TextView
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:fontFamily="@font/title_english"
-            android:text="ONEX"
-            android:textColor="#000000"
-            android:textSize="30sp" />
+       <ImageView
+           android:layout_marginLeft="15dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"
+           android:src="@drawable/title1"
+           android:layout_width="100dp"
+           android:layout_height="50dp"/>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -30,6 +28,7 @@
 
 
     <ScrollView
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
@@ -58,42 +57,52 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/menu"
+                android:fontFamily="@font/menu2"
                 android:text="인기 전시 TOP3"
                 android:textColor="@color/black"
 
                 android:textSize="18dp" />
             <LinearLayout
+
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-                <ImageView
-                    android:src="@drawable/home1"
-                    android:id="@+id/home_1"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="200dp"
-                    />
+
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:background="@drawable/shadow"
+                        android:id="@+id/home_1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="180dp"
+                        android:src="@drawable/home1" />
+
+
+
 
                 <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/home2"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:id="@+id/home_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="200dp"
-                    />
+                    android:layout_height="180dp"
+                    android:src="@drawable/home2" />
                 <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/home3"
+
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:id="@+id/home_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="200dp"
-                    />
+                    android:layout_height="180dp"
+                    android:src="@drawable/home3" />
+
+
+
             </LinearLayout>
             <ImageView
                 android:src="@drawable/creator"
@@ -109,7 +118,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/menu"
+                android:fontFamily="@font/menu2"
                 android:textSize="18dp"
                 android:text="인기 작품 TOP3"
                 />
@@ -121,31 +130,40 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-                <ImageView
 
-                    android:src = "@drawable/home4"
+                <ImageView
+                    android:layout_height="130dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:layout_width="0dp"
+
                     android:layout_weight="1"
-                    android:layout_height="150dp"
-                    />
+                    android:src="@drawable/home4" />
 
                 <ImageView
+                    android:layout_height="130dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:layout_marginLeft="10dp"
-
                     android:src = "@drawable/home5"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="150dp" />
+                    />
 
                 <ImageView
                     android:layout_marginLeft="10dp"
                     android:src = "@drawable/home6"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="150dp"
+                    android:layout_height="130dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     />
             </LinearLayout>
-            <View style="@style/Divider"/>
+            <View
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                style="@style/Divider"/>
            <LinearLayout
                android:layout_marginTop="20dp"
                android:layout_marginRight="15dp"
@@ -160,7 +178,7 @@
                    android:layout_marginBottom="10dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:fontFamily="@font/menu"
+                   android:fontFamily="@font/menu2"
                    android:textSize="18dp"
                    android:text="전시 포스트"
 
@@ -189,34 +207,42 @@
                 >
                 <ImageView
 
+                    android:layout_height="220dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:src ="@drawable/home7"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="250dp"
+
                     />
 
                 <ImageView
+                    android:layout_height="220dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/home8"
                     android:layout_width="0dp"
-                    android:layout_height="250dp"
                     android:layout_weight="1" />
 
                 <ImageView
+                    android:layout_height="220dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shadow"
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/home9"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="250dp"
                     />
             </LinearLayout>
             <TextView
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/menu"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/menu2"
                 android:textSize="18dp"
                 android:text="#HOT #HASHTAG"
 
