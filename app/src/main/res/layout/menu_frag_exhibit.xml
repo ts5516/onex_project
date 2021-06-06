@@ -123,7 +123,7 @@
                             android:src="@drawable/today2" />
 
                         <ImageView
-                            android:layout_width="200dp"
+                            android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
                             android:scaleType="fitXY"
@@ -176,7 +176,7 @@
                         <ImageView
 
                             android:id="@+id/btn_hacking"
-                            android:layout_width="200dp"
+                            android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
                             android:scaleType="fitXY"
@@ -227,7 +227,7 @@
                             android:src="@drawable/recent2" />
 
                         <ImageView
-                            android:layout_width="200dp"
+                            android:layout_width="150dp"
                             android:layout_height="225dp"
                             android:layout_marginLeft="10dp"
                             android:scaleType="fitXY"

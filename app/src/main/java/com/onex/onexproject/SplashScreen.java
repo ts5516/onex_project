@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SplashScreen extends AppCompatActivity {
 
     private static  int SPLASH_SCREEN = 5000;
@@ -23,8 +25,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
-
-
+        FirebaseAuth.getInstance().signOut();
         //Animations
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.anim_splash_textview);
         text = findViewById(R.id.splashText);

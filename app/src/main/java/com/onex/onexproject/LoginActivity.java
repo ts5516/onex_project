@@ -66,8 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = activityLoginBinding.getRoot();
         setContentView(view);
-        TextView textView = (TextView)activityLoginBinding.gSignIn.getChildAt(0);
-        textView.setText(getString(R.string.gSingIn));
         mAuth = FirebaseAuth.getInstance();
 
         createRequest();
